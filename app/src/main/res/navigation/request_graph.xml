@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/request_graph"
+    app:startDestination="@id/requestFragment">
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="com.book.store.stock.bookstore.base_pages.dash_board.request.RequestFragment"
+        android:label="request_fragment"
+        tools:layout="@layout/request_fragment" >
+        <action
+            android:id="@+id/action_requestFragment_to_requestAnswerFragment"
+            app:destination="@id/requestAnswerFragment" />
+        <action
+            android:id="@+id/action_requestFragment_to_requestSearchFragment"
+            app:destination="@id/requestSearchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestSearchFragment"
+        android:name="com.book.store.stock.bookstore.base_pages.dash_board.request.search.RequestSearchFragment"
+        android:label="request_search_fragment"
+        tools:layout="@layout/request_search_fragment" >
+        <action
+            android:id="@+id/action_requestSearchFragment_to_requestAnswerFragment"
+            app:destination="@id/requestAnswerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestAnswerFragment"
+        android:name="com.book.store.stock.bookstore.base_pages.dash_board.request.answer.RequestAnswerFragment"
+        android:label="request_answer_fragment"
+        tools:layout="@layout/request_answer_fragment" />
+</navigation>
