@@ -2,4 +2,10 @@
     <string name="app_name">BookStore</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="user_code">کد کاربری</string>
+    <string name="user_name">نام کاربری</string>
+    <string name="password">رمز عبور</string>
+    <string name="login">ورود</string>
+    <string name="register">ثبت نام نکرده اید ؟ </string>
+    <string name="forget_password">فراموشی رمز عبور </string>
 </resources>
