@@ -6,7 +6,7 @@
     app:startDestination="@id/requestFragment">
     <fragment
         android:id="@+id/requestFragment"
-        android:name="com.book.store.stock.bookstore.base_pages.dash_board.request.RequestFragment"
+        android:name="com.book.store.stock.bookstore.pages.dash_board.request.RequestFragment"
         android:label="request_fragment"
         tools:layout="@layout/request_fragment" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/requestSearchFragment"
-        android:name="com.book.store.stock.bookstore.base_pages.dash_board.request.search.RequestSearchFragment"
+        android:name="com.book.store.stock.bookstore.pages.dash_board.request.search.RequestSearchFragment"
         android:label="request_search_fragment"
         tools:layout="@layout/request_search_fragment" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/requestAnswerFragment"
-        android:name="com.book.store.stock.bookstore.base_pages.dash_board.request.answer.RequestAnswerFragment"
+        android:name="com.book.store.stock.bookstore.pages.dash_board.request.answer.RequestAnswerFragment"
         android:label="request_answer_fragment"
         tools:layout="@layout/request_answer_fragment" />
 </navigation>

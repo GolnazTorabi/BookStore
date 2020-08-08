@@ -1,8 +1,9 @@
 import android.util.ArrayMap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.book.store.stock.bookstore.base_pages.authentication.login.LoginViewModel
+import com.book.store.stock.bookstore.pages.authentication.login.LoginViewModel
 import com.book.store.stock.bookstore.di.component.ViewModelSubComponent
+import com.book.store.stock.bookstore.pages.authentication.splash.SplashScreenViewModel
 import java.util.concurrent.Callable
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -32,5 +33,6 @@ class ViewModelFactory @Inject constructor(viewModelSubComponent: ViewModelSubCo
 
     init {
         creators[LoginViewModel::class.java] = Callable { viewModelSubComponent!!.loginViewModel() }
+        creators[SplashScreenViewModel::class.java] = Callable { viewModelSubComponent!!.splashViewModel() }
     }
 }

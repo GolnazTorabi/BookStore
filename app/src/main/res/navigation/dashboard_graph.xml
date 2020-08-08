@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/dashBoardFragment"
-        android:name="com.book.store.stock.bookstore.base_pages.dash_board.DashBoardFragment"
+        android:name="com.book.store.stock.bookstore.pages.dash_board.DashBoardFragment"
         android:label="dash_board_fragment"
         tools:layout="@layout/dash_board_fragment" >
         <action

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".base_pages.setting.report.stock_clerk.SettingReportStockClerkFragment">
+    tools:context=".pages.setting.report.stock_clerk.SettingReportStockClerkFragment">
 
     <TextView
         android:layout_width="match_parent"

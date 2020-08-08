@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.book.store.stock.bookstore.base_pages.setting.SettingFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.SettingFragment"
         android:label="setting_fragment"
         tools:layout="@layout/setting_fragment" >
         <action
@@ -28,22 +28,22 @@
     </fragment>
     <fragment
         android:id="@+id/settingSearchFragment"
-        android:name="com.book.store.stock.bookstore.base_pages.setting.search.SettingSearchFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.search.SettingSearchFragment"
         android:label="setting_search_fragment"
         tools:layout="@layout/setting_search_fragment" />
     <fragment
         android:id="@+id/settingNewBookFragment"
-        android:name="com.book.store.stock.bookstore.base_pages.setting.new_data.book.SettingNewBookFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.new_data.book.SettingNewBookFragment"
         android:label="setting_new_book_fragment"
         tools:layout="@layout/setting_new_book_fragment" />
     <fragment
         android:id="@+id/settingReportSellerFragment"
-        android:name="com.book.store.stock.bookstore.base_pages.setting.report.seller.SettingReportSellerFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.report.seller.SettingReportSellerFragment"
         android:label="setting_report_seller_fragment"
         tools:layout="@layout/setting_report_seller_fragment" />
     <fragment
         android:id="@+id/settingReportStockClerkFragment"
-        android:name="com.book.store.stock.bookstore.base_pages.setting.report.stock_clerk.SettingReportStockClerkFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.report.stock_clerk.SettingReportStockClerkFragment"
         android:label="setting_report_stock_clerk_fragment"
         tools:layout="@layout/setting_report_stock_clerk_fragment" >
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingRequestSellerFragment"
-        android:name="com.book.store.stock.bookstore.base_pages.setting.request.seller.SettingRequestSellerFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.request.seller.SettingRequestSellerFragment"
         android:label="setting_request_seller_fragment"
         tools:layout="@layout/setting_request_seller_fragment" >
         <action
@@ -61,12 +61,12 @@
     </fragment>
     <fragment
         android:id="@+id/settingNewRequestFragment"
-        android:name="com.book.store.stock.bookstore.base_pages.setting.request.new_request.SettingNewRequestFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.request.new_request.SettingNewRequestFragment"
         android:label="setting_new_request_fragment"
         tools:layout="@layout/setting_new_request_fragment" />
     <fragment
         android:id="@+id/settingNewReportFragment"
-        android:name="com.book.store.stock.bookstore.base_pages.setting.new_data.report.SettingNewReportFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.new_data.report.SettingNewReportFragment"
         android:label="setting_new_report_fragment"
         tools:layout="@layout/setting_new_report_fragment" />
 </navigation>

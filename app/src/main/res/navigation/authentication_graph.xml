@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/splashScreenFragment"
-        android:name="com.book.store.stock.bookstore.base_pages.authentication.splash.SplashScreenFragment"
+        android:name="com.book.store.stock.bookstore.pages.authentication.splash.SplashScreenFragment"
         android:label="splash_screen_fragment"
         tools:layout="@layout/splash_screen_fragment" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.book.store.stock.bookstore.base_pages.authentication.login.LoginFragment"
+        android:name="com.book.store.stock.bookstore.pages.authentication.login.LoginFragment"
         android:label="login_fragment"
         tools:layout="@layout/login_fragment" >
         <action
@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.book.store.stock.bookstore.base_pages.authentication.register.RegisterFragment"
+        android:name="com.book.store.stock.bookstore.pages.authentication.register.RegisterFragment"
         android:label="register_fragment"
         tools:layout="@layout/register_fragment" >
         <action

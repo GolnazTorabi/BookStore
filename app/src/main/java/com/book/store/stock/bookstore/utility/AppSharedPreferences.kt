@@ -20,4 +20,16 @@ class AppSharedPreferences @Inject constructor(context: Context) {
         return sharedPreferences.getString("token", "")!!
     }
 
+    open fun setLogIn(authToken: Boolean?) {
+        sharedPreferences.edit()
+            .putBoolean("login",authToken?:false)
+            .apply()
+
+
+    }
+
+    fun getLogin(): Boolean {
+        return sharedPreferences.getBoolean("login", false)
+    }
+
 }
