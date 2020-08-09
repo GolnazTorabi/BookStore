@@ -1,6 +1,8 @@
 package com.book.store.stock.bookstore.pages.authentication.login
 
 import android.os.Bundle
+import android.text.InputType
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.LoginFragmentBinding
+import com.book.store.stock.bookstore.utility.Fonts
 import javax.inject.Inject
 
 class LoginFragment : Fragment() {
@@ -20,6 +23,8 @@ class LoginFragment : Fragment() {
 
     @Inject
     lateinit var factory: ViewModelProvider.Factory
+
+    private var isShowPass = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +41,26 @@ class LoginFragment : Fragment() {
         loginButtonClicked()
         forgetPassword()
         register()
+        eyeClick()
+    }
+
+    private fun eyeClick() {
+        binding.eye.setOnClickListener {
+            if (isShowPass) {
+                binding.eye.setImageResource(R.drawable.ic_baseline_visibility_off_24)
+                binding.passwordEdit.typeface = Fonts.typefaceDefault(context)
+                binding.passwordEdit.inputType =
+                    InputType.TYPE_TEXT_VARIATION_PASSWORD or InputType.TYPE_CLASS_TEXT
+                binding.passwordEdit.transformationMethod = PasswordTransformationMethod()
+            } else {
+                binding.eye.setImageResource(R.drawable.ic_baseline_visibility_24)
+                binding.passwordEdit.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
+            }
+            binding.passwordEdit.typeface = context?.let { it1 -> Fonts.typefaceBold(it1) }
+            isShowPass = !isShowPass
+        }
+
     }
 
     private fun register() {
@@ -80,21 +105,21 @@ class LoginFragment : Fragment() {
         }
         binding.usernameEdit.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
-                binding.codeEditLayout.isErrorEnabled = false
+                binding.usernameEditLayout.isErrorEnabled = false
             } else {
-                if (binding.codeEdit.length() < 4) {
-                    binding.codeEditLayout.isErrorEnabled = true
-                    binding.codeEditLayout.error = "نام کاربری خود را کامل وارد کنید"
+                if (binding.usernameEdit.length() < 4) {
+                    binding.usernameEditLayout.isErrorEnabled = true
+                    binding.usernameEditLayout.error = "نام کاربری خود را کامل وارد کنید"
                 }
             }
         }
         binding.passwordEdit.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
-                binding.codeEditLayout.isErrorEnabled = false
+                binding.passwordEditLayout.isErrorEnabled = false
             } else {
-                if (binding.codeEdit.length() < 8) {
-                    binding.codeEditLayout.isErrorEnabled = true
-                    binding.codeEditLayout.error = "پسورد خود را کامل وارد کنید"
+                if (binding.passwordEdit.length() < 8) {
+                    binding.passwordEditLayout.isErrorEnabled = true
+                    binding.passwordEditLayout.error = "پسورد خود را کامل وارد کنید"
                 }
             }
         }
