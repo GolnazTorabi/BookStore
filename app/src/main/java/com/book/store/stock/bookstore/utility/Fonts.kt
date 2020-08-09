@@ -9,7 +9,7 @@ object Fonts {
     fun typefaceDefault(mContext: Context?): Typeface? {
         if (typefaceDefault == null) {
             typefaceDefault =
-                Typeface.createFromAsset(mContext?.assets, "fonts/IRANSansMobile(FaNum).ttf")
+                Typeface.createFromAsset(mContext?.assets, "fonts/iransans.ttf")
         }
         return typefaceDefault
     }
@@ -19,7 +19,7 @@ object Fonts {
         if (typefaceBold == null) {
             typefaceBold = Typeface.createFromAsset(
                 mContext.assets,
-                "fonts/IRANSansMobile(FaNum)_Bold.ttf"
+                "fonts/iransans_bold.ttf"
             )
         }
         return typefaceBold
