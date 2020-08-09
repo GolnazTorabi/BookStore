@@ -80,21 +80,21 @@ class LoginFragment : Fragment() {
         }
         binding.usernameEdit.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
-                binding.codeEditLayout.isErrorEnabled = false
+                binding.usernameEditLayout.isErrorEnabled = false
             } else {
-                if (binding.codeEdit.length() < 4) {
-                    binding.codeEditLayout.isErrorEnabled = true
-                    binding.codeEditLayout.error = "نام کاربری خود را کامل وارد کنید"
+                if (binding.usernameEdit.length() < 4) {
+                    binding.usernameEditLayout.isErrorEnabled = true
+                    binding.usernameEditLayout.error = "نام کاربری خود را کامل وارد کنید"
                 }
             }
         }
         binding.passwordEdit.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
-                binding.codeEditLayout.isErrorEnabled = false
+                binding.passwordEditLayout.isErrorEnabled = false
             } else {
-                if (binding.codeEdit.length() < 8) {
-                    binding.codeEditLayout.isErrorEnabled = true
-                    binding.codeEditLayout.error = "پسورد خود را کامل وارد کنید"
+                if (binding.passwordEdit.length() < 8) {
+                    binding.passwordEditLayout.isErrorEnabled = true
+                    binding.passwordEditLayout.error = "پسورد خود را کامل وارد کنید"
                 }
             }
         }
