@@ -1,6 +1,7 @@
 package com.book.store.stock.bookstore.di.component
 
 import com.book.store.stock.bookstore.pages.authentication.login.LoginViewModel
+import com.book.store.stock.bookstore.pages.authentication.register.RegisterViewModel
 import com.book.store.stock.bookstore.pages.authentication.splash.SplashScreenViewModel
 import dagger.Subcomponent
 
@@ -13,4 +14,5 @@ interface ViewModelSubComponent {
 //view model with function name
     fun loginViewModel():LoginViewModel
     fun splashViewModel():SplashScreenViewModel
+    fun registerViewModel():RegisterViewModel
 }
