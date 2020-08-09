@@ -1,6 +1,8 @@
 package com.book.store.stock.bookstore.pages.authentication.register
 
 import android.os.Bundle
+import android.text.InputType
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +12,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.RegisterFragmentBinding
+import com.book.store.stock.bookstore.utility.Fonts
 import javax.inject.Inject
 
 class RegisterFragment : Fragment() {
 
     private lateinit var viewModel: RegisterViewModel
     private lateinit var binding: RegisterFragmentBinding
-
+    private var isShowPass = false
     @Inject
     lateinit var factory: ViewModelProvider.Factory
 
@@ -34,7 +37,27 @@ class RegisterFragment : Fragment() {
         checkEditTexts()
         binding.back.setOnClickListener { activity?.onBackPressed() }
         registerUser()
+        eyeClick()
     }
+    private fun eyeClick() {
+        binding.eye.setOnClickListener {
+            if (isShowPass) {
+                binding.eye.setImageResource(R.drawable.ic_baseline_visibility_off_24)
+                binding.passwordEdit.typeface = Fonts.typefaceDefault(context)
+                binding.passwordEdit.inputType =
+                    InputType.TYPE_TEXT_VARIATION_PASSWORD or InputType.TYPE_CLASS_TEXT
+                binding.passwordEdit.transformationMethod = PasswordTransformationMethod()
+            } else {
+                binding.eye.setImageResource(R.drawable.ic_baseline_visibility_24)
+                binding.passwordEdit.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE
+            }
+            binding.passwordEdit.typeface = context?.let { it1 -> Fonts.typefaceBold(it1) }
+            isShowPass = !isShowPass
+        }
+
+    }
+
 
     private fun registerUser() {
         if(binding.registerButton.isEnabled){
