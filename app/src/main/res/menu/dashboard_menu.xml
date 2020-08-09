@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item
+        android:id="@+id/dashboard"
+        android:icon="@drawable/ic_baseline_dashboard_24"
+        android:title="پیشخوان" />
+
+
+    <item
+        android:id="@+id/shop"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:title="سفارشات" />
+
+
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="تنظیمات" />
+
+</menu>
