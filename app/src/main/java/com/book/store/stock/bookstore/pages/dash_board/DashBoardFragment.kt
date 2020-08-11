@@ -48,7 +48,6 @@ class DashBoardFragment : DaggerFragment(), LoadMoreListener {
         super.onViewCreated(view, savedInstanceState)
         checkIsSeller()
         binding.back.setOnClickListener { activity?.onBackPressed() }
-        binding.filter.setOnClickListener { findNavController().navigate(R.id.action_dashBoardFragment_to_dashBoardFilterFragment) }
         observeFilterData()
     }
 
@@ -81,6 +80,7 @@ class DashBoardFragment : DaggerFragment(), LoadMoreListener {
             it.let {
                 when (it) {
                     DashBoardViewModel.SellerStock.Seller -> {
+                        binding.filter.setOnClickListener { findNavController().navigate(R.id.action_dashBoardFragment_to_dashBoardFilterFragment) }
                         isSeller = true
                         initSellerAdapter()
                     }
