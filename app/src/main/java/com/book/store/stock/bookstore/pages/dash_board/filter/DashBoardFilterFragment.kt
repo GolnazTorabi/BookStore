@@ -1,12 +1,15 @@
 package com.book.store.stock.bookstore.pages.dash_board.filter
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.book.store.stock.bookstore.R
+import com.book.store.stock.bookstore.databinding.DashBoardFilterFragmentBinding
+import javax.inject.Inject
 
 class DashBoardFilterFragment : Fragment() {
 
@@ -15,17 +18,22 @@ class DashBoardFilterFragment : Fragment() {
     }
 
     private lateinit var viewModel: DashBoardFilterViewModel
+    private lateinit var binding: DashBoardFilterFragmentBinding
+
+    @Inject
+    lateinit var factory: ViewModelProvider.Factory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.dash_board_filter_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.dash_board_filter_fragment, container, false)
+        viewModel = ViewModelProvider(this, factory).get(DashBoardFilterViewModel::class.java)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(DashBoardFilterViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
