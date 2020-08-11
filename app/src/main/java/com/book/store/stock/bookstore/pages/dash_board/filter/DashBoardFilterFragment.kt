@@ -1,4 +1,4 @@
-package com.book.store.stock.bookstore.pages.dash_board
+package com.book.store.stock.bookstore.pages.dash_board.filter
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -6,24 +6,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import com.book.store.stock.bookstore.R
-import dagger.android.support.DaggerFragment
 
-class DashBoardFragment : DaggerFragment() {
+class DashBoardFilterFragment : Fragment() {
 
-    private lateinit var viewModel: DashBoardViewModel
+    companion object {
+        fun newInstance() = DashBoardFilterFragment()
+    }
+
+    private lateinit var viewModel: DashBoardFilterViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.dash_board_fragment, container, false)
+        return inflater.inflate(R.layout.dash_board_filter_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DashBoardViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(DashBoardFilterViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
