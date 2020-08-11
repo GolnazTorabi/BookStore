@@ -1,6 +1,7 @@
-package com.book.store.stock.bookstore
+package com.book.store.stock.bookstore.pages
 
 import android.os.Bundle
+import com.book.store.stock.bookstore.R
 import dagger.android.support.DaggerAppCompatActivity
 
 

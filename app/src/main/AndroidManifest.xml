@@ -15,12 +15,12 @@
         android:theme="@style/AppTheme"
         tools:replace="allowBackup">
         <activity
-            android:name=".MainActivity"
+            android:name=".pages.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden">
         </activity>
         <activity
-            android:name=".StartActivity"
+            android:name=".pages.StartActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden">
             <nav-graph android:value="@navigation/authentication_graph" />

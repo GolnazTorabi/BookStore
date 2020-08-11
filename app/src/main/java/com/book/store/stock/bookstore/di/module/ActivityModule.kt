@@ -1,7 +1,7 @@
 package com.book.store.stock.bookstore.di.module
 
-import com.book.store.stock.bookstore.MainActivity
-import com.book.store.stock.bookstore.StartActivity
+import com.book.store.stock.bookstore.pages.MainActivity
+import com.book.store.stock.bookstore.pages.StartActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
