@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.DashBoardFilterFragmentBinding
 import javax.inject.Inject
@@ -34,7 +35,27 @@ class DashBoardFilterFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        // TODO: Use the ViewModel
+        binding.back.setOnClickListener { activity?.onBackPressed() }
+        onFilterClicked()
+    }
+
+    private fun onFilterClicked() {
+        binding.mostSale.setOnClickListener {
+            findNavController().previousBackStackEntry?.savedStateHandle?.set("mostSale", "mostSale")
+            activity?.onBackPressed()
+        }
+        binding.news.setOnClickListener {
+            findNavController().previousBackStackEntry?.savedStateHandle?.set("news", "news")
+            activity?.onBackPressed()
+        }
+        binding.bookName.setOnClickListener {
+            findNavController().previousBackStackEntry?.savedStateHandle?.set("bookName", "bookName")
+            activity?.onBackPressed()
+        }
+        binding.publisher.setOnClickListener {
+            findNavController().previousBackStackEntry?.savedStateHandle?.set("publisher", "publisher")
+            activity?.onBackPressed()
+        }
     }
 
 }
