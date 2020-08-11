@@ -1,4 +1,4 @@
-package com.book.store.stock.bookstore.utility
+package com.book.store.stock.bookstore
 
 import android.app.Activity
 import android.app.Application

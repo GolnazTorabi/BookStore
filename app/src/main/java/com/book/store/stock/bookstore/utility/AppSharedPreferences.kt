@@ -8,7 +8,7 @@ class AppSharedPreferences @Inject constructor(context: Context) {
     private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences("shared preferences", 0)
 
-    open fun setAuthToken(authToken: String?) {
+    fun setAuthToken(authToken: String?) {
         sharedPreferences.edit()
             .putString("token", "Bearer $authToken")
             .apply()
@@ -20,9 +20,9 @@ class AppSharedPreferences @Inject constructor(context: Context) {
         return sharedPreferences.getString("token", "")!!
     }
 
-    open fun setLogIn(authToken: Boolean?) {
+    fun setLogIn(authToken: Boolean?) {
         sharedPreferences.edit()
-            .putBoolean("login",authToken?:false)
+            .putBoolean("login", authToken ?: false)
             .apply()
 
 

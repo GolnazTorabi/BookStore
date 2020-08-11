@@ -1,8 +1,6 @@
 package com.book.store.stock.bookstore
 
-import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.MenuItem
@@ -10,7 +8,6 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
-import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
@@ -19,7 +16,6 @@ import androidx.navigation.NavDestination
 import androidx.viewpager.widget.ViewPager
 import com.book.store.stock.bookstore.base_ui.BaseMainPageDaggerFragment
 import com.book.store.stock.bookstore.databinding.MainActivityBinding
-import com.book.store.stock.bookstore.ui.main.MainFragment
 import com.book.store.stock.bookstore.utility.AppSharedPreferences
 import com.book.store.stock.bookstore.utility.Updatable
 import com.daimajia.androidanimations.library.Techniques
@@ -30,9 +26,11 @@ import kotlinx.android.synthetic.main.main_activity.*
 import java.util.*
 import javax.inject.Inject
 
-class MainActivity : DaggerAppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener,
+class MainActivity : DaggerAppCompatActivity(),
+    BottomNavigationView.OnNavigationItemSelectedListener,
     ViewPager.OnPageChangeListener,
-    BottomNavigationView.OnNavigationItemReselectedListener, NavController.OnDestinationChangedListener {
+    BottomNavigationView.OnNavigationItemReselectedListener,
+    NavController.OnDestinationChangedListener {
 
 
     @Inject
@@ -43,14 +41,25 @@ class MainActivity : DaggerAppCompatActivity(), BottomNavigationView.OnNavigatio
     private val backStack = Stack<Int>()
 
     private val fragments = listOf(
-        BaseMainPageDaggerFragment.newInstance(R.layout.content_settings_base, R.id.toolbar_setting, R.id.nav_host_settings),
-        BaseMainPageDaggerFragment.newInstance(R.layout.content_shop_base, R.id.toolbar_order, R.id.nav_host_order),
-        BaseMainPageDaggerFragment.newInstance(R.layout.content_dashboard_base, R.id.toolbar_dashboard, R.id.nav_host_dashboard)
+        BaseMainPageDaggerFragment.newInstance(
+            R.layout.content_settings_base,
+            R.id.toolbar_setting,
+            R.id.nav_host_settings
+        ),
+        BaseMainPageDaggerFragment.newInstance(
+            R.layout.content_shop_base,
+            R.id.toolbar_order,
+            R.id.nav_host_order
+        ),
+        BaseMainPageDaggerFragment.newInstance(
+            R.layout.content_dashboard_base,
+            R.id.toolbar_dashboard,
+            R.id.nav_host_dashboard
+        )
     )
 
 
     private val indexToPage = mapOf(0 to R.id.setting, 1 to R.id.shop, 2 to R.id.dashboard)
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,7 +74,6 @@ class MainActivity : DaggerAppCompatActivity(), BottomNavigationView.OnNavigatio
         binding.navigation.setOnNavigationItemSelectedListener(this)
         binding.navigation.setOnNavigationItemReselectedListener(this)
         setItem(2)
-
 
 
     }
@@ -113,7 +121,8 @@ class MainActivity : DaggerAppCompatActivity(), BottomNavigationView.OnNavigatio
 
     }
 
-    inner class ViewPagerAdapter : FragmentPagerAdapter(supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+    inner class ViewPagerAdapter :
+        FragmentPagerAdapter(supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
         override fun getItem(position: Int): Fragment = fragments[position]
 
@@ -125,7 +134,6 @@ class MainActivity : DaggerAppCompatActivity(), BottomNavigationView.OnNavigatio
     }
 
 
-
     fun setStatusBarColor(color: Int) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window: Window = window
@@ -135,7 +143,11 @@ class MainActivity : DaggerAppCompatActivity(), BottomNavigationView.OnNavigatio
     }
 
 
-    override fun onDestinationChanged(controller: NavController, destination: NavDestination, arguments: Bundle?) {
+    override fun onDestinationChanged(
+        controller: NavController,
+        destination: NavDestination,
+        arguments: Bundle?
+    ) {
         if (destination.id == R.id.dashBoardFragment || destination.id == R.id.settingFragment || destination.id == R.id.orderFragment) {
             if (binding.navigation.visibility != View.VISIBLE) {
                 YoYo.with(Techniques.SlideInUp).duration(500).playOn(binding.navigation)

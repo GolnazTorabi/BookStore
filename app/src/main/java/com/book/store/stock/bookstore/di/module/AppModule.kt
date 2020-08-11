@@ -35,9 +35,6 @@ internal class AppModule {
         val builder = OkHttpClient.Builder()
         val logging = HttpLoggingInterceptor()
         logging.setLevel(HttpLoggingInterceptor.Level.BASIC)
-        val client = OkHttpClient.Builder()
-            .addInterceptor(logging)
-            .build()
         builder.connectTimeout(60, TimeUnit.SECONDS)
         builder.readTimeout(60, TimeUnit.SECONDS)
         builder.writeTimeout(60, TimeUnit.SECONDS)
@@ -81,7 +78,7 @@ internal class AppModule {
         return Room.databaseBuilder(
             application.applicationContext,
             AppDatabase::class.java,
-            "VANDAR-DB"
+            "BOOK-STORE-DB"
         )
             .allowMainThreadQueries().fallbackToDestructiveMigration().build()
     }

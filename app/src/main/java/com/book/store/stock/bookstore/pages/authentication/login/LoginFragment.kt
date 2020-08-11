@@ -14,9 +14,10 @@ import androidx.navigation.fragment.findNavController
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.LoginFragmentBinding
 import com.book.store.stock.bookstore.utility.Fonts
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class LoginFragment : Fragment() {
+class LoginFragment : DaggerFragment() {
 
     private lateinit var viewModel: LoginViewModel
     private lateinit var binding: LoginFragmentBinding

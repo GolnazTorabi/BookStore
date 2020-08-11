@@ -3,7 +3,7 @@ package com.book.store.stock.bookstore.di.component
 import android.app.Application
 import com.book.store.stock.bookstore.di.module.ActivityModule
 import com.book.store.stock.bookstore.di.module.AppModule
-import com.book.store.stock.bookstore.utility.App
+import com.book.store.stock.bookstore.App
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule

@@ -13,9 +13,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.RegisterFragmentBinding
 import com.book.store.stock.bookstore.utility.Fonts
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class RegisterFragment : Fragment() {
+class RegisterFragment : DaggerFragment() {
 
     private lateinit var viewModel: RegisterViewModel
     private lateinit var binding: RegisterFragmentBinding

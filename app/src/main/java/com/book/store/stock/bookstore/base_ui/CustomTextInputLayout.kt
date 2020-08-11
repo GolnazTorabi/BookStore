@@ -39,8 +39,7 @@ class CustomTextInputLayout : TextInputLayout {
         try {
             val layout = this;
 
-            val errorView = (this.getChildAt(1) as ViewGroup).getChildAt(0).findViewById<AppCompatTextView>(
-                R.id.textinput_error)
+            val errorView = (this.getChildAt(1) as ViewGroup).getChildAt(0).findViewById<AppCompatTextView>(R.id.textinput_error)
 
             (layout.getChildAt(1) as ViewGroup).layoutParams.width = LayoutParams.MATCH_PARENT
             (layout.getChildAt(1) as ViewGroup).getChildAt(0).layoutParams.width = FrameLayout.LayoutParams.MATCH_PARENT
@@ -54,6 +53,8 @@ class CustomTextInputLayout : TextInputLayout {
 
 
     }
+
+
 
 
 }
