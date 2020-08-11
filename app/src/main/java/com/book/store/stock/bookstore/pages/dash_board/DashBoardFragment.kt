@@ -49,6 +49,26 @@ class DashBoardFragment : DaggerFragment(), LoadMoreListener {
         checkIsSeller()
         binding.back.setOnClickListener { activity?.onBackPressed() }
         binding.filter.setOnClickListener { findNavController().navigate(R.id.action_dashBoardFragment_to_dashBoardFilterFragment) }
+        observeFilterData()
+    }
+
+    private fun observeFilterData() {
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String>("mostSale")?.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                "mostSale" -> getBookData("mostSale")
+                "news" -> getBookData("news")
+                "bookName" -> getBookData("bookName")
+                "publisher" -> getBookData("publisher")
+            }
+        })
+    }
+
+    private fun getBookData(data: String) {
+        if (data.isBlank()) {
+            //first data
+        } else {
+
+        }
     }
 
     private fun checkIsSeller() {

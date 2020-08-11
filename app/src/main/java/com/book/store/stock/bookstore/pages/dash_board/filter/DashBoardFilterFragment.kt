@@ -41,21 +41,22 @@ class DashBoardFilterFragment : Fragment() {
 
     private fun onFilterClicked() {
         binding.mostSale.setOnClickListener {
-            findNavController().previousBackStackEntry?.savedStateHandle?.set("mostSale", "mostSale")
-            activity?.onBackPressed()
+            findNavController().previousBackStackEntry?.savedStateHandle?.set("filter", "mostSale")
+
         }
         binding.news.setOnClickListener {
-            findNavController().previousBackStackEntry?.savedStateHandle?.set("news", "news")
-            activity?.onBackPressed()
+            findNavController().previousBackStackEntry?.savedStateHandle?.set("filter", "news")
+
         }
         binding.bookName.setOnClickListener {
-            findNavController().previousBackStackEntry?.savedStateHandle?.set("bookName", "bookName")
-            activity?.onBackPressed()
+            findNavController().previousBackStackEntry?.savedStateHandle?.set("filter", "bookName")
+
         }
         binding.publisher.setOnClickListener {
-            findNavController().previousBackStackEntry?.savedStateHandle?.set("publisher", "publisher")
-            activity?.onBackPressed()
+            findNavController().previousBackStackEntry?.savedStateHandle?.set("filter", "publisher")
+
         }
+        activity?.onBackPressed()
     }
 
 }
