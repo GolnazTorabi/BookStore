@@ -1,14 +1,22 @@
 package com.book.store.stock.bookstore.pages.setting
 
-import androidx.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.book.store.stock.bookstore.R
+import com.book.store.stock.bookstore.databinding.SettingFragmentBinding
+import com.book.store.stock.bookstore.pages.StartActivity
+import com.book.store.stock.bookstore.utility.AppSharedPreferences
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-class SettingFragment : Fragment() {
+class SettingFragment : DaggerFragment() {
 
     companion object {
         fun newInstance() =
@@ -16,18 +24,64 @@ class SettingFragment : Fragment() {
     }
 
     private lateinit var viewModel: SettingViewModel
+    private lateinit var binding: SettingFragmentBinding
+
+    @Inject
+    lateinit var factory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var appSharedPreferences: AppSharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.setting_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.setting_fragment, container, false)
+        viewModel = ViewModelProvider(this, factory).get(SettingViewModel::class.java)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(SettingViewModel::class.java)
-        // TODO: Use the ViewModel
+        binding.back.setOnClickListener { activity?.onBackPressed() }
+        goToSearch()
+        goToReports()
+        goToRequest()
+        goToNewBook()
+        exitFromApp()
+    }
+
+    private fun exitFromApp() {
+        binding.exitLayout.setOnClickListener {
+            appSharedPreferences.removeAuthToken()
+            activity?.finish()
+            startActivity(Intent(context, StartActivity::class.java))
+        }
+    }
+
+    private fun goToNewBook() {
+        binding.newBooks.setOnClickListener { findNavController().navigate(R.id.action_settingFragment_to_settingNewBookFragment) }
+    }
+
+    private fun goToRequest() {
+        binding.requests.setOnClickListener { findNavController().navigate(R.id.action_settingFragment_to_settingRequestSellerFragment) }
+    }
+
+    private fun goToReports() {
+        viewModel.isSeller()
+        viewModel.isSeller.observe(viewLifecycleOwner, Observer {
+            it.let {
+                when (it) {
+                    SettingViewModel.IsSeller.Seller -> binding.reports.setOnClickListener { findNavController().navigate(R.id.action_settingFragment_to_settingReportSellerFragment) }
+                    SettingViewModel.IsSeller.Stock -> binding.reports.setOnClickListener { findNavController().navigate(R.id.action_settingFragment_to_settingReportStockClerkFragment) }
+                }
+
+            }
+        })
+    }
+
+    private fun goToSearch() {
+        binding.searchLayout.setOnClickListener { findNavController().navigate(R.id.action_settingFragment_to_settingSearchFragment) }
     }
 
 }

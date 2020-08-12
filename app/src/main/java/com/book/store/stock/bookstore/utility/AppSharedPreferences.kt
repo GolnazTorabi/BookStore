@@ -20,6 +20,13 @@ class AppSharedPreferences @Inject constructor(context: Context) {
         return sharedPreferences.getString("token", "")!!
     }
 
+    fun removeAuthToken() {
+        sharedPreferences.edit()
+            .remove("token")
+            .apply()
+    }
+
+
     fun setLogIn(login: Boolean?) {
         sharedPreferences.edit()
             .putBoolean("login", login ?: false)
