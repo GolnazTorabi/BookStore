@@ -25,5 +25,13 @@
         <action
             android:id="@+id/action_dashBoardFragment_to_order_graph"
             app:destination="@id/order_graph" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_dashBoardFilterFragment"
+            app:destination="@id/dashBoardFilterFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/dashBoardFilterFragment"
+        android:name="com.book.store.stock.bookstore.pages.dash_board.filter.DashBoardFilterFragment"
+        android:label="dash_board_filter_fragment"
+        tools:layout="@layout/dash_board_filter_fragment" />
 </navigation>

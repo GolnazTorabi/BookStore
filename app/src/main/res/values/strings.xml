@@ -12,4 +12,14 @@
     <string name="family">نام خانوادگی</string>
     <string name="email">ایمیل</string>
     <string name="register_button_text">ثبت نام</string>
+    <string name="most_sale">پر فروش ها</string>
+    <string name="news">تازه ها</string>
+    <string name="book_name">نام کتاب (حروف الفبا)</string>
+    <string name="publisher">انتشارات(حروف الفبا)</string>
+    <string name="choose">انتخاب کنید</string>
+    <string name="search">جستجو</string>
+    <string name="reports">گزارشات</string>
+    <string name="requests">درخواست از انبار</string>
+    <string name="new_book">کتاب جدید</string>
+    <string name="exit">خروج</string>
 </resources>

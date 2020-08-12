@@ -20,9 +20,9 @@ class AppSharedPreferences @Inject constructor(context: Context) {
         return sharedPreferences.getString("token", "")!!
     }
 
-    fun setLogIn(authToken: Boolean?) {
+    fun setLogIn(login: Boolean?) {
         sharedPreferences.edit()
-            .putBoolean("login", authToken ?: false)
+            .putBoolean("login", login ?: false)
             .apply()
 
 
@@ -30,6 +30,18 @@ class AppSharedPreferences @Inject constructor(context: Context) {
 
     fun getLogin(): Boolean {
         return sharedPreferences.getBoolean("login", false)
+    }
+
+    fun isSeller(seller: Boolean?) {
+        sharedPreferences.edit()
+            .putBoolean("seller", seller ?: false)
+            .apply()
+
+
+    }
+
+    fun getSeller(): Boolean {
+        return sharedPreferences.getBoolean("seller", false)
     }
 
 }

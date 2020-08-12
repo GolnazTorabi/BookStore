@@ -1,4 +1,4 @@
-package com.book.store.stock.bookstore
+package com.book.store.stock.bookstore.pages
 
 import android.os.Build
 import android.os.Bundle
@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.viewpager.widget.ViewPager
+import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.base_ui.BaseMainPageDaggerFragment
 import com.book.store.stock.bookstore.databinding.MainActivityBinding
 import com.book.store.stock.bookstore.utility.AppSharedPreferences
