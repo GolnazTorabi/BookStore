@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background">
+
+    <com.book.store.stock.bookstore.base_ui.CustomEditText
+        android:id="@+id/seach_edit"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@null"
+        app:layout_constraintLeft_toRightOf="@id/search_icon"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/search_icon"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/selectableItemBackground"
+        android:padding="@dimen/margin_4"
+        app:srcCompat="@drawable/ic_baseline_search_24"
+        tools:ignore="MissingConstraints,VectorDrawableCompat" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grayDark"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seach_edit" />
+
+    <com.book.store.stock.bookstore.base_ui.CustomTextView
+        android:id="@+id/hint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_1"
+        android:layout_marginEnd="@dimen/margin_4"
+        android:gravity="right"
+        android:text="@string/search_hint"
+        android:textColor="@color/secondary_color"
+        android:textSize="@dimen/text_size_2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+
+    <com.book.store.stock.bookstore.base_ui.CustomTextView
+        android:id="@+id/title_search_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_marginEnd="@dimen/margin_4"
+        android:text="@string/search_by"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/text_size_3"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hint" />
+
+    <LinearLayout
+        android:id="@+id/search_by_items"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_4"
+        android:layout_marginEnd="@dimen/margin_4"
+        android:orientation="vertical"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_search_by">
+
+        <com.book.store.stock.bookstore.base_ui.CustomTextView
+            android:id="@+id/book_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/book_name"
+            android:textColor="@color/secondary_color"
+            android:textSize="@dimen/text_size_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.book.store.stock.bookstore.base_ui.CustomTextView
+            android:id="@+id/book_writer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="@dimen/margin_2"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/book_writer"
+            android:textColor="@color/secondary_color"
+            android:textSize="@dimen/text_size_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.book.store.stock.bookstore.base_ui.CustomTextView
+            android:id="@+id/publisher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="@dimen/margin_2"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/publisher"
+            android:textColor="@color/secondary_color"
+            android:textSize="@dimen/text_size_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.book.store.stock.bookstore.base_ui.CustomTextView
+            android:id="@+id/topic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="@dimen/margin_2"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/topic"
+            android:textColor="@color/secondary_color"
+            android:textSize="@dimen/text_size_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_3"
+        android:layout_marginEnd="@dimen/margin_4"
+        android:orientation="vertical"
+        app:layout_constraintRight_toLeftOf="@id/search_by_items"
+        app:layout_constraintTop_toBottomOf="@id/title_search_by">
+
+        <CheckBox
+            android:id="@+id/book_name_check_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/book_name"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/book_writer_check_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/book_writer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/publisher_check_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/publisher"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/topic_check_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/topic"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+    <com.book.store.stock.bookstore.base_ui.CustomTextView
+        android:id="@+id/title_search_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_5"
+        android:text="@string/search_order"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/text_size_3"
+        app:layout_constraintRight_toRightOf="@id/search_order_items"
+        app:layout_constraintTop_toBottomOf="@id/hint" />
+
+    <LinearLayout
+        android:id="@+id/check_box_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_4"
+        android:layout_marginTop="@dimen/margin_3"
+        android:layout_marginEnd="@dimen/margin_4"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_search_by">
+
+        <CheckBox
+            android:id="@+id/publisher_order_check_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/book_writer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/most_sale_check_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/publisher"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/writer_check_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/topic"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/search_order_items"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_4"
+        android:layout_marginEnd="@dimen/margin_4"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toRightOf="@id/check_box_order"
+        app:layout_constraintTop_toBottomOf="@id/title_search_by">
+
+
+
+        <com.book.store.stock.bookstore.base_ui.CustomTextView
+            android:id="@+id/publisher_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/publisher_order"
+            android:textColor="@color/secondary_color"
+            android:textSize="@dimen/text_size_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.book.store.stock.bookstore.base_ui.CustomTextView
+            android:id="@+id/most_sale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="@dimen/margin_2"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/most_sale"
+            android:textColor="@color/secondary_color"
+            android:textSize="@dimen/text_size_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.book.store.stock.bookstore.base_ui.CustomTextView
+            android:id="@+id/writer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="@dimen/margin_2"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/book_writer"
+            android:textColor="@color/secondary_color"
+            android:textSize="@dimen/text_size_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

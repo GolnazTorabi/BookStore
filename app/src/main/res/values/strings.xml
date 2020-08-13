@@ -14,12 +14,19 @@
     <string name="register_button_text">ثبت نام</string>
     <string name="most_sale">پر فروش ها</string>
     <string name="news">تازه ها</string>
-    <string name="book_name">نام کتاب (حروف الفبا)</string>
-    <string name="publisher">انتشارات(حروف الفبا)</string>
+    <string name="book_name_order">نام کتاب (حروف الفبا)</string>
+    <string name="publisher_order">انتشارات(حروف الفبا)</string>
     <string name="choose">انتخاب کنید</string>
     <string name="search">جستجو</string>
     <string name="reports">گزارشات</string>
     <string name="requests">درخواست از انبار</string>
     <string name="new_book">کتاب جدید</string>
     <string name="exit">خروج</string>
+    <string name="search_hint">برای سرچ بر روی ایکون سرچ کلیک کنید</string>
+    <string name="search_by">سرچ براساس</string>
+    <string name="search_order">مرتب سازی براساس</string>
+    <string name="book_name">نام کتاب</string>
+    <string name="book_writer">نام نویسنده</string>
+    <string name="publisher">انتشارات</string>
+    <string name="topic">موضوع</string>
 </resources>
