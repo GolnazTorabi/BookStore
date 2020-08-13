@@ -29,4 +29,5 @@
     <string name="book_writer">نام نویسنده</string>
     <string name="publisher">انتشارات</string>
     <string name="topic">موضوع</string>
+    <string name="count">تعداد</string>
 </resources>
