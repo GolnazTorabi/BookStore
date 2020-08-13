@@ -1,19 +1,19 @@
 package com.book.store.stock.bookstore.pages.setting.report.seller
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.SettingReportSellerFragmentBinding
-import com.book.store.stock.bookstore.pages.dash_board.DashBoardAdapter
 import com.book.store.stock.bookstore.utility.LoadMoreListener
+import javax.inject.Inject
 
-class SettingReportSellerFragment : DialogFragment(),LoadMoreListener {
+class SettingReportSellerFragment : DialogFragment(), LoadMoreListener {
 
     companion object {
         fun newInstance() =
@@ -24,16 +24,21 @@ class SettingReportSellerFragment : DialogFragment(),LoadMoreListener {
     private lateinit var binding: SettingReportSellerFragmentBinding
     private lateinit var notificationAdapter: SettingReportSellerAdapter
 
+    @Inject
+    lateinit var factory: ViewModelProvider.Factory
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.setting_report_seller_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.setting_report_seller_fragment, container, false)
+        viewModel = ViewModelProvider(this, factory).get(SettingReportSellerViewModel::class.java)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(SettingReportSellerViewModel::class.java)
+
         // TODO: Use the ViewModel
     }
 
