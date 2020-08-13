@@ -8,6 +8,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.SettingNewRequestFragmentBinding
 import javax.inject.Inject
@@ -37,6 +38,22 @@ class SettingNewRequestFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         checkEditText()
+        submitButtonClicked()
+        binding.back.setOnClickListener { activity?.onBackPressed() }
+    }
+
+    private fun submitButtonClicked() {
+        if (binding.submit.isEnabled) {
+            binding.submit.setOnClickListener {
+                val list = ArrayList<String>()
+                list.add(0, binding.bookEdit.text.toString())
+                list.add(0, binding.writerEdit.text.toString())
+                list.add(0, binding.publisherEdit.text.toString())
+                list.add(0, binding.countEdit.text.toString())
+                findNavController().previousBackStackEntry?.savedStateHandle?.set("book_data", list)
+                activity?.onBackPressed()
+            }
+        }
     }
 
     private fun checkEditText() {
