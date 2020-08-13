@@ -38,7 +38,7 @@ class SettingReportSellerFragment : DialogFragment(), LoadMoreListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
+        initSellerAdapter()
         // TODO: Use the ViewModel
     }
 
