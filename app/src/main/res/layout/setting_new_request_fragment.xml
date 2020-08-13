@@ -16,16 +16,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"
         tools:ignore="VectorDrawableCompat" />
+
     <com.book.store.stock.bookstore.base_ui.CustomTextViewBold
         android:layout_width="wrap_content"
         android:layout_height="?attr/actionBarSize"
         android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="کتاب جدید"
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/text_size_5"
-        android:text="کتاب جدید"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.book.store.stock.bookstore.base_ui.CustomTextInputLayout
         android:id="@+id/book_edit_layout"
@@ -50,8 +51,8 @@
             android:layout_height="match_parent"
             android:background="@null"
             android:clickable="true"
-            android:gravity="right"
             android:digits="ضصثقفغعهخحجچگکمنتالبیسشظطزرذدپوكٓژٰ‌ٔءؤئإيأآةًٌٍَُِّْ"
+            android:gravity="right"
             android:inputType="text"
             android:maxLength="30"
             android:nextFocusDown="@id/writer_edit"
@@ -87,8 +88,8 @@
             android:layout_height="match_parent"
             android:background="@null"
             android:clickable="true"
-            android:gravity="right"
             android:digits="ضصثقفغعهخحجچگکمنتالبیسشظطزرذدپوكٓژٰ‌ٔءؤئإيأآةًٌٍَُِّْ"
+            android:gravity="right"
             android:inputType="text"
             android:maxLength="30"
             android:nextFocusDown="@id/publisher_edit"
@@ -124,10 +125,10 @@
             android:layout_height="match_parent"
             android:background="@null"
             android:clickable="true"
-            android:gravity="right"
-            android:maxLength="30"
             android:digits="ضصثقفغعهخحجچگکمنتالبیسشظطزرذدپوكٓژٰ‌ٔءؤئإيأآةًٌٍَُِّْ"
+            android:gravity="right"
             android:inputType="text"
+            android:maxLength="30"
             android:paddingStart="@dimen/margin_3"
             android:paddingTop="@dimen/margin_4"
             android:paddingEnd="@dimen/margin_3"
@@ -173,4 +174,19 @@
             tools:ignore="RtlSymmetry" />
 
     </com.book.store.stock.bookstore.base_ui.CustomTextInputLayout>
+
+    <com.book.store.stock.bookstore.base_ui.CustomButton
+        android:id="@+id/submit"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/margin_10"
+        android:layout_marginStart="@dimen/margin_4"
+        android:layout_marginEnd="@dimen/margin_4"
+        android:layout_marginBottom="@dimen/margin_4"
+        android:background="@drawable/button_default"
+        android:text="ثبت"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size_3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
