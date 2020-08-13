@@ -25,6 +25,7 @@ class SettingFragment : DaggerFragment() {
 
     private lateinit var viewModel: SettingViewModel
     private lateinit var binding: SettingFragmentBinding
+    private var isSeller: Boolean? = false
 
     @Inject
     lateinit var factory: ViewModelProvider.Factory
@@ -49,6 +50,26 @@ class SettingFragment : DaggerFragment() {
         goToRequest()
         goToNewBook()
         exitFromApp()
+        checkIsSeller()
+    }
+
+    private fun checkIsSeller() {
+        viewModel.isSeller()
+        viewModel.isSeller.observe(viewLifecycleOwner, Observer {
+            it.let {
+                when (it) {
+                    SettingViewModel.IsSeller.Seller -> {
+                        isSeller = true
+                        binding.newBooks.visibility = View.GONE
+                    }
+                    SettingViewModel.IsSeller.Stock -> {
+                        isSeller = false
+                        binding.requests.visibility = View.GONE
+                    }
+                }
+
+            }
+        })
     }
 
     private fun exitFromApp() {
@@ -68,16 +89,10 @@ class SettingFragment : DaggerFragment() {
     }
 
     private fun goToReports() {
-        viewModel.isSeller()
-        viewModel.isSeller.observe(viewLifecycleOwner, Observer {
-            it.let {
-                when (it) {
-                    SettingViewModel.IsSeller.Seller -> binding.reports.setOnClickListener { findNavController().navigate(R.id.action_settingFragment_to_settingReportSellerFragment) }
-                    SettingViewModel.IsSeller.Stock -> binding.reports.setOnClickListener { findNavController().navigate(R.id.action_settingFragment_to_settingReportStockClerkFragment) }
-                }
-
-            }
-        })
+        when (isSeller) {
+            true -> binding.reports.setOnClickListener { findNavController().navigate(R.id.action_settingFragment_to_settingReportSellerFragment) }
+            else -> binding.reports.setOnClickListener { findNavController().navigate(R.id.action_settingFragment_to_settingReportStockClerkFragment) }
+        }
     }
 
     private fun goToSearch() {
