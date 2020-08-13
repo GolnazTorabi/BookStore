@@ -16,7 +16,6 @@ class SettingSearchAdapter(var list: ArrayList<String>, var onLoadMoreListener: 
 
     companion object {
         const val HeaderType = 0
-        const val DataType = 1
     }
 
 
