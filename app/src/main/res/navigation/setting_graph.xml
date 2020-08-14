@@ -51,8 +51,8 @@
         android:label="setting_report_stock_clerk_fragment"
         tools:layout="@layout/setting_report_stock_clerk_fragment" >
         <action
-            android:id="@+id/action_settingReportStockClerkFragment_to_settingNewReportFragment"
-            app:destination="@id/settingNewReportFragment" />
+            android:id="@+id/action_settingReportStockClerkFragment_to_settingAddNewBookFragment"
+            app:destination="@id/settingAddNewBookFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingRequestSellerFragment"
@@ -68,11 +68,6 @@
         android:name="com.book.store.stock.bookstore.pages.setting.request.seller.new_request.SettingNewRequestFragment"
         android:label="setting_new_request_fragment"
         tools:layout="@layout/setting_new_request_fragment" />
-    <fragment
-        android:id="@+id/settingNewReportFragment"
-        android:name="com.book.store.stock.bookstore.pages.setting.new_data.report.SettingNewReportFragment"
-        android:label="setting_new_report_fragment"
-        tools:layout="@layout/setting_new_report_fragment" />
     <fragment
         android:id="@+id/settingAddNewBookFragment"
         android:name="com.book.store.stock.bookstore.pages.setting.new_data.book.add_new_book.SettingAddNewBookFragment"

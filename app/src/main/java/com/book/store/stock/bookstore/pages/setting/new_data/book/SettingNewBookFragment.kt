@@ -1,8 +1,6 @@
 package com.book.store.stock.bookstore.pages.setting.new_data.book
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.store.stock.bookstore.R
-import com.book.store.stock.bookstore.databinding.SettingAddNewBookFragmentBinding
 import com.book.store.stock.bookstore.databinding.SettingNewBookFragmentBinding
-import com.book.store.stock.bookstore.pages.setting.request.seller.SettingRequestSellerAdapter
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class SettingNewBookFragment : Fragment() {
+class SettingNewBookFragment : DaggerFragment() {
 
     companion object {
         fun newInstance() =
@@ -31,14 +28,14 @@ class SettingNewBookFragment : Fragment() {
     private var bookList = ArrayList<String>()
 
     @Inject
-    lateinit var factory:ViewModelProvider.Factory
+    lateinit var factory: ViewModelProvider.Factory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.setting_new_book_fragment, container, false)
-        viewModel = ViewModelProvider(this,factory).get(SettingNewBookViewModel::class.java)
+        binding = DataBindingUtil.inflate(inflater, R.layout.setting_new_book_fragment, container, false)
+        viewModel = ViewModelProvider(this, factory).get(SettingNewBookViewModel::class.java)
         return binding.root
     }
 
@@ -50,6 +47,7 @@ class SettingNewBookFragment : Fragment() {
         submitData()
 
     }
+
     private fun submitData() {
         binding.submit.setOnClickListener {
             //TODO api call

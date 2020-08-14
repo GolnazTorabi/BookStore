@@ -6,17 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.SettingAddNewBookFragmentBinding
+import dagger.android.support.DaggerFragment
 import saman.zamani.persiandate.PersianDate
 import javax.inject.Inject
 
 
-class SettingAddNewBookFragment : Fragment() {
+class SettingAddNewBookFragment : DaggerFragment() {
 
     companion object {
         fun newInstance() = SettingAddNewBookFragment()
