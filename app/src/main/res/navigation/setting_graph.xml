@@ -35,7 +35,11 @@
         android:id="@+id/settingNewBookFragment"
         android:name="com.book.store.stock.bookstore.pages.setting.new_data.book.SettingNewBookFragment"
         android:label="setting_new_book_fragment"
-        tools:layout="@layout/setting_new_book_fragment" />
+        tools:layout="@layout/setting_new_book_fragment" >
+        <action
+            android:id="@+id/action_settingNewBookFragment_to_settingAddNewBookFragment"
+            app:destination="@id/settingAddNewBookFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingReportSellerFragment"
         android:name="com.book.store.stock.bookstore.pages.setting.report.seller.SettingReportSellerFragment"
@@ -61,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingNewRequestFragment"
-        android:name="com.book.store.stock.bookstore.pages.setting.request.new_request.SettingNewRequestFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.request.seller.new_request.SettingNewRequestFragment"
         android:label="setting_new_request_fragment"
         tools:layout="@layout/setting_new_request_fragment" />
     <fragment
@@ -69,4 +73,18 @@
         android:name="com.book.store.stock.bookstore.pages.setting.new_data.report.SettingNewReportFragment"
         android:label="setting_new_report_fragment"
         tools:layout="@layout/setting_new_report_fragment" />
+    <fragment
+        android:id="@+id/settingAddNewBookFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.new_data.book.add_new_book.SettingAddNewBookFragment"
+        android:label="setting_add_new_book_fragment"
+        tools:layout="@layout/setting_add_new_book_fragment" >
+        <action
+            android:id="@+id/action_settingAddNewBookFragment_to_settingScannerFragment"
+            app:destination="@id/settingScannerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingScannerFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.new_data.book.add_new_book.scanner.SettingScannerFragment"
+        android:label="setting_scanner_fragment"
+        tools:layout="@layout/setting_scanner_fragment" />
 </navigation>

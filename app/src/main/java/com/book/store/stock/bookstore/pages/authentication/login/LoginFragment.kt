@@ -99,6 +99,7 @@ class LoginFragment : DaggerFragment() {
                 binding.codeEditLayout.isErrorEnabled = false
             } else {
                 if (binding.codeEdit.length() < 4) {
+                    binding.loginButton.isEnabled = false
                     binding.codeEditLayout.isErrorEnabled = true
                     binding.codeEditLayout.error = "کد کاربری خود را کامل وارد کنید"
                 }
@@ -109,6 +110,7 @@ class LoginFragment : DaggerFragment() {
                 binding.usernameEditLayout.isErrorEnabled = false
             } else {
                 if (binding.usernameEdit.length() < 4) {
+                    binding.loginButton.isEnabled = false
                     binding.usernameEditLayout.isErrorEnabled = true
                     binding.usernameEditLayout.error = "نام کاربری خود را کامل وارد کنید"
                 }
@@ -119,6 +121,7 @@ class LoginFragment : DaggerFragment() {
                 binding.passwordEditLayout.isErrorEnabled = false
             } else {
                 if (binding.passwordEdit.length() < 8) {
+                    binding.loginButton.isEnabled = false
                     binding.passwordEditLayout.isErrorEnabled = true
                     binding.passwordEditLayout.error = "پسورد خود را کامل وارد کنید"
                 }

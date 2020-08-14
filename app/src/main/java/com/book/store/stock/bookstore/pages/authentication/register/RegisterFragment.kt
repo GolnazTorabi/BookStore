@@ -93,6 +93,7 @@ class RegisterFragment : DaggerFragment() {
                 binding.codeEditLayout.isErrorEnabled = false
             } else {
                 if (binding.codeEdit.length() < 4) {
+                    binding.registerButton.isEnabled = false
                     binding.codeEditLayout.isErrorEnabled = true
                     binding.codeEditLayout.error = "کد کاربری خود را کامل وارد کنید"
                 }
@@ -103,6 +104,7 @@ class RegisterFragment : DaggerFragment() {
                 binding.usernameEditLayout.isErrorEnabled = false
             } else {
                 if (binding.usernameEdit.length() < 5) {
+                    binding.registerButton.isEnabled = false
                     binding.usernameEditLayout.isErrorEnabled = true
                     binding.usernameEditLayout.error = "نام کاربری خود را کامل وارد کنید"
                 }
@@ -113,6 +115,7 @@ class RegisterFragment : DaggerFragment() {
                 binding.nameEditLayout.isErrorEnabled = false
             } else {
                 if (binding.nameEdit.length() < 3) {
+                    binding.registerButton.isEnabled = false
                     binding.nameEditLayout.isErrorEnabled = true
                     binding.nameEditLayout.error = "نام  خود را کامل وارد کنید"
                 }
@@ -123,6 +126,7 @@ class RegisterFragment : DaggerFragment() {
                 binding.familyEditLayout.isErrorEnabled = false
             } else {
                 if (binding.familyEdit.length() < 3) {
+                    binding.registerButton.isEnabled = false
                     binding.familyEditLayout.isErrorEnabled = true
                     binding.familyEditLayout.error = "نام خانوادگی خود را کامل وارد کنید"
                 }
@@ -133,6 +137,7 @@ class RegisterFragment : DaggerFragment() {
                 binding.emailEditLayout.isErrorEnabled = false
             } else {
                 if (android.util.Patterns.EMAIL_ADDRESS.matcher(binding.emailEdit.text.toString()).matches()) {
+                    binding.registerButton.isEnabled = false
                     binding.emailEditLayout.isErrorEnabled = true
                     binding.emailEditLayout.error = "ایمیل خود را درست و کامل وارد کنید"
                 }
@@ -143,6 +148,7 @@ class RegisterFragment : DaggerFragment() {
                 binding.passwordEditLayout.isErrorEnabled = false
             } else {
                 if (binding.passwordEdit.length() < 8) {
+                    binding.registerButton.isEnabled = false
                     binding.passwordEditLayout.isErrorEnabled = true
                     binding.passwordEditLayout.error = "رمز عبور خود را کامل وارد کنید"
                 }
