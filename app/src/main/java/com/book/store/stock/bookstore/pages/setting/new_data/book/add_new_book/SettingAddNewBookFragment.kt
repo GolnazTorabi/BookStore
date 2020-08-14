@@ -68,7 +68,7 @@ class SettingAddNewBookFragment : Fragment() {
             }
         }
         binding.yearEdit.doAfterTextChanged {
-            if (it?.length ?: 0 == 4) {
+            if (it?.length ?: 0 == 4 && date.shYear != it.toString().toInt()) {
                 binding.submit.isEnabled = false
             }
         }
@@ -131,7 +131,9 @@ class SettingAddNewBookFragment : Fragment() {
                     binding.yearEditLayout.error = "سال وارد شده درست نمیباشد"
                 }
                 if (binding.yearEdit.length() == 4 && date.shYear != binding.yearEdit.text.toString().toInt()) {
-
+                    binding.submit.isEnabled = false
+                    binding.yearEditLayout.isErrorEnabled = true
+                    binding.yearEditLayout.error = "سال وارد شده درست نمیباشد"
                 }
             }
         }
