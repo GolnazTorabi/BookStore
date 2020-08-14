@@ -1,14 +1,20 @@
 package com.book.store.stock.bookstore.pages.setting.new_data.book.add_new_book
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doAfterTextChanged
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.book.store.stock.bookstore.R
+import com.book.store.stock.bookstore.databinding.SettingAddNewBookFragmentBinding
+import saman.zamani.persiandate.PersianDate
+import javax.inject.Inject
+
 
 class SettingAddNewBookFragment : Fragment() {
 
@@ -17,19 +23,26 @@ class SettingAddNewBookFragment : Fragment() {
     }
 
     private lateinit var viewModel: SettingAddNewBookViewModel
+    private lateinit var binding: SettingAddNewBookFragmentBinding
+
+    private var date = PersianDate()
+
+    @Inject
+    lateinit var factory: ViewModelProvider.Factory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.setting_add_new_book_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.setting_add_new_book_fragment, container, false)
+        viewModel = ViewModelProvider(this).get(SettingAddNewBookViewModel::class.java)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(SettingAddNewBookViewModel::class.java)
-        // TODO: Use the ViewModel
         getBardCodeData()
+        checkEditText()
     }
 
     private fun getBardCodeData() {
@@ -37,5 +50,126 @@ class SettingAddNewBookFragment : Fragment() {
             //scanner data
         })
     }
+
+    private fun checkEditText() {
+        binding.bookEdit.doAfterTextChanged {
+            if (it?.length ?: 0 > 2) {
+                binding.submit.isEnabled = false
+            }
+        }
+        binding.priceEdit.doAfterTextChanged {
+            if (it?.length ?: 0 > 3) {
+                binding.submit.isEnabled = false
+            }
+        }
+        binding.nobatChapEdit.doAfterTextChanged {
+            if (it?.length ?: 0 > 0) {
+                binding.submit.isEnabled = false
+            }
+        }
+        binding.yearEdit.doAfterTextChanged {
+            if (it?.length ?: 0 == 4) {
+                binding.submit.isEnabled = false
+            }
+        }
+        binding.writerEdit.doAfterTextChanged {
+            if (it?.length ?: 0 > 10) {
+                binding.submit.isEnabled = false
+            }
+        }
+        binding.publisherEdit.doAfterTextChanged {
+            if (it?.length ?: 0 > 1) {
+                binding.submit.isEnabled = false
+            }
+        }
+        binding.countEdit.doAfterTextChanged {
+            if (it?.length ?: 0 > 0 && it.toString() != "0") {
+                binding.submit.isEnabled = false
+            }
+        }
+
+        binding.countEdit.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                binding.countEditLayout.isErrorEnabled = false
+            } else {
+                if (binding.countEdit.length() < 4) {
+                    binding.submit.isEnabled = false
+                    binding.countEditLayout.isErrorEnabled = true
+                    binding.countEditLayout.error = "رقم وارد شده باید بزرگ تر از ۰ باشد"
+                }
+            }
+        }
+        binding.priceEdit.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                binding.priceEditLayout.isErrorEnabled = false
+            } else {
+                if (binding.priceEdit.length() < 4) {
+                    binding.submit.isEnabled = false
+                    binding.priceEditLayout.isErrorEnabled = true
+                    binding.priceEditLayout.error = "قیمت را درست وارد کنید"
+                }
+            }
+        }
+        binding.nobatChapEdit.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                binding.nobatChapEditLayout.isErrorEnabled = false
+            } else {
+                if (binding.nobatChapEdit.length() < 4) {
+                    binding.submit.isEnabled = false
+                    binding.nobatChapEditLayout.isErrorEnabled = true
+                    binding.nobatChapEditLayout.error = "رقم وارد شده باید بزرگ تر از ۰ باشد"
+                }
+            }
+        }
+        binding.yearEdit.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                binding.yearEditLayout.isErrorEnabled = false
+            } else {
+                if (binding.yearEdit.length() < 4) {
+                    binding.submit.isEnabled = false
+                    binding.yearEditLayout.isErrorEnabled = true
+                    binding.yearEditLayout.error = "سال وارد شده درست نمیباشد"
+                }
+                if (binding.yearEdit.length() == 4 && date.shYear != binding.yearEdit.text.toString().toInt()) {
+
+                }
+            }
+        }
+        binding.publisherEdit.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                binding.publisherEditLayout.isErrorEnabled = false
+            } else {
+                if (binding.publisherEdit.length() < 4) {
+                    binding.submit.isEnabled = false
+                    binding.publisherEditLayout.isErrorEnabled = true
+                    binding.publisherEditLayout.error = "نام انتشارات  را کامل وارد کنید"
+                }
+            }
+        }
+        binding.writerEdit.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                binding.writerEditLayout.isErrorEnabled = false
+            } else {
+                if (binding.writerEdit.length() < 4) {
+                    binding.submit.isEnabled = false
+                    binding.writerEditLayout.isErrorEnabled = true
+                    binding.writerEditLayout.error = "نام نویسنده را کامل وارد کنید"
+                }
+            }
+        }
+        binding.bookEdit.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                binding.bookEditLayout.isErrorEnabled = false
+            } else {
+                if (binding.bookEdit.length() < 4) {
+                    binding.submit.isEnabled = false
+                    binding.bookEditLayout.isErrorEnabled = true
+                    binding.bookEditLayout.error = "نام کتاب را کامل وارد کنید"
+                }
+            }
+        }
+
+    }
+
 
 }
