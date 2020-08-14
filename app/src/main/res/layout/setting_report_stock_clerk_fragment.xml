@@ -1,13 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".pages.setting.report.stock_clerk.SettingReportStockClerkFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/back"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="right"
+        android:padding="@dimen/margin_4"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"
+        tools:ignore="VectorDrawableCompat" />
 
-</FrameLayout>
+    <com.book.store.stock.bookstore.base_ui.CustomTextView
+        android:id="@+id/title_report_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_marginEnd="@dimen/margin_4"
+        android:text="نوع گزارش : "
+        android:textColor="@color/secondary_color"
+        android:textSize="@dimen/text_size_4"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/back" />
+
+    <RadioGroup
+        android:id="@+id/group_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_marginTop="@dimen/margin_3"
+        android:layoutDirection="rtl"
+        android:layout_marginEnd="@dimen/margin_6"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_report_type">
+
+        <RadioButton
+            android:id="@+id/buy_book"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="خرید کردن"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_3">
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/marjo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="مرجوع کردن"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_3">
+
+        </RadioButton>
+    </RadioGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_4"
+        android:layout_marginTop="@dimen/margin_3"
+        android:layout_marginEnd="@dimen/margin_4"
+        android:layout_marginBottom="@dimen/margin_5"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toTopOf="@id/button_layout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group_button"
+        app:layout_goneMarginTop="@dimen/margin_5" />
+
+    <LinearLayout
+        android:id="@+id/button_layout"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/margin_10"
+        android:layout_marginStart="@dimen/margin_4"
+        android:layout_marginEnd="@dimen/margin_4"
+        android:layout_marginBottom="@dimen/margin_4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <com.book.store.stock.bookstore.base_ui.CustomButton
+            android:id="@+id/submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_2"
+            android:layout_weight="1"
+            android:background="@drawable/button_default"
+            android:text="ثبت"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_3" />
+
+        <com.book.store.stock.bookstore.base_ui.CustomButton
+            android:id="@+id/new_report"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/margin_10"
+            android:layout_weight="1"
+            android:background="@drawable/without_back_button"
+            android:text="گزارش جدید"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_3" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
