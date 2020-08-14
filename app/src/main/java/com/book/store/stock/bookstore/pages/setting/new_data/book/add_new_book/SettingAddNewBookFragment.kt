@@ -43,6 +43,20 @@ class SettingAddNewBookFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         getBardCodeData()
         checkEditText()
+        sendData()
+        binding.back.setOnClickListener { activity?.onBackPressed() }
+    }
+
+    private fun sendData() {
+        binding.submit.setOnClickListener {
+            val list = ArrayList<String>()
+            list.add(0, binding.bookEdit.text.toString())
+            list.add(0, binding.writerEdit.text.toString())
+            list.add(0, binding.publisherEdit.text.toString())
+            list.add(0, binding.countEdit.text.toString())
+            findNavController().previousBackStackEntry?.savedStateHandle?.set("book", list)
+            activity?.onBackPressed()
+        }
     }
 
     private fun getBardCodeData() {
