@@ -59,9 +59,10 @@ class OrderFragment : DaggerFragment() {
             it.let {
                 when (it) {
                     OrderViewModel.SellerStock.Seller -> {
-
+                        binding.stock.visibility = View.GONE
                     }
                     OrderViewModel.SellerStock.Stock -> {
+                        binding.stock.visibility = View.VISIBLE
                         isSeller = false
                         search()
                     }
