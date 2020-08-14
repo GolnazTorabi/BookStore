@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_item_background"
+    app:cardCornerRadius="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.book.store.stock.bookstore.base_ui.CustomTextViewBold
+            android:id="@+id/book_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_3"
+            android:layout_marginEnd="@dimen/margin_3"
+            android:gravity="right"
+            android:text="@string/book_name_with_name"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_3"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.book.store.stock.bookstore.base_ui.CustomTextViewBold
+            android:id="@+id/writer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_2"
+            android:layout_marginEnd="@dimen/margin_3"
+            android:gravity="right"
+            android:text="@string/book_writer_with_name"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_3"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/book_name" />
+
+        <com.book.store.stock.bookstore.base_ui.CustomTextViewBold
+            android:id="@+id/publisher"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_3"
+            android:layout_marginEnd="@dimen/margin_3"
+            android:gravity="right"
+            android:text="@string/book_publisher_with_name"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_3"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/writer" />
+
+        <com.book.store.stock.bookstore.base_ui.CustomTextViewBold
+            android:id="@+id/count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_3"
+            android:layout_marginEnd="@dimen/margin_3"
+            android:gravity="right"
+            android:text="@string/count_data"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_3"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/publisher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/margin_2"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
+</layout>

@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingNewRequestFragment"
-        android:name="com.book.store.stock.bookstore.pages.setting.request.new_request.SettingNewRequestFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.request.seller.new_request.SettingNewRequestFragment"
         android:label="setting_new_request_fragment"
         tools:layout="@layout/setting_new_request_fragment" />
     <fragment

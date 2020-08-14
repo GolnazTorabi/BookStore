@@ -1,4 +1,4 @@
-package com.book.store.stock.bookstore.pages.setting.request.new_request
+package com.book.store.stock.bookstore.pages.setting.request.seller.new_request
 
 import android.os.Bundle
 import android.view.LayoutInflater

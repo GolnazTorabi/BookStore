@@ -30,4 +30,8 @@
     <string name="publisher">انتشارات</string>
     <string name="topic">موضوع</string>
     <string name="count">تعداد</string>
+    <string name="book_name_with_name"> کتاب : %s</string>
+    <string name="book_writer_with_name"> نویسنده : %s</string>
+    <string name="book_publisher_with_name"> انتشارات : %s</string>
+    <string name="count_data"> تعداد : %d</string>
 </resources>
