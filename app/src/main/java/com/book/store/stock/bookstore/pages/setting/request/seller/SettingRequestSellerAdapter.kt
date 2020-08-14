@@ -6,9 +6,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.SettingRequestNewBookItemsBinding
-import com.book.store.stock.bookstore.utility.LoadMoreListener
 
-class SettingRequestSellerAdapter(var list: ArrayList<String>, private var onLoadMoreListener: LoadMoreListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SettingRequestSellerAdapter(var list: ArrayList<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     private var layoutInflater: LayoutInflater? = null
@@ -31,9 +30,6 @@ class SettingRequestSellerAdapter(var list: ArrayList<String>, private var onLoa
             holder.binding.publisher.text = list[position]
             holder.binding.count.text = list[position]
         }
-
-        if (position == list.size - 1)
-            onLoadMoreListener.onLoadMore()
     }
 
     class SettingRequestNewBookItemsViewHolder(var binding: SettingRequestNewBookItemsBinding) : RecyclerView.ViewHolder(binding.root) {
