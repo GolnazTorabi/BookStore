@@ -69,4 +69,14 @@
         android:name="com.book.store.stock.bookstore.pages.setting.new_data.report.SettingNewReportFragment"
         android:label="setting_new_report_fragment"
         tools:layout="@layout/setting_new_report_fragment" />
+    <fragment
+        android:id="@+id/settingAddNewBookFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.new_data.book.add_new_book.SettingAddNewBookFragment"
+        android:label="setting_add_new_book_fragment"
+        tools:layout="@layout/setting_add_new_book_fragment" />
+    <fragment
+        android:id="@+id/settingScannerFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.new_data.book.add_new_book.scanner.SettingScannerFragment"
+        android:label="setting_scanner_fragment"
+        tools:layout="@layout/setting_scanner_fragment" />
 </navigation>
