@@ -35,13 +35,27 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.book.store.stock.bookstore.base_ui.CustomTextViewBold
+            android:id="@+id/barcode"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="@dimen/margin_5"
+            android:gravity="center"
+            android:layout_marginEnd="@dimen/margin_4"
+            android:layout_marginStart="@dimen/margin_4"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/back" />
+
         <com.book.store.stock.bookstore.base_ui.CustomTextInputLayout
             android:id="@+id/book_edit_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
             android:layout_height="@dimen/margin_11"
             android:layout_marginStart="@dimen/margin_4"
-            android:layout_marginTop="@dimen/margin_11"
+            android:layout_marginTop="@dimen/margin_3"
             android:layout_marginEnd="@dimen/margin_4"
             android:hint="@string/book_name"
             android:layoutDirection="rtl"
@@ -50,7 +64,7 @@
             app:errorEnabled="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/back">
+            app:layout_constraintTop_toBottomOf="@id/barcode">
 
             <com.book.store.stock.bookstore.base_ui.CustomTextInput
                 android:id="@+id/book_edit"
@@ -295,6 +309,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/margin_10"
             android:layout_marginStart="@dimen/margin_4"
+            android:layout_marginTop="@dimen/margin_4"
             android:layout_marginEnd="@dimen/margin_4"
             android:layout_marginBottom="@dimen/margin_4"
             android:background="@drawable/button_default"
@@ -304,7 +319,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="@dimen/margin_4"
             app:layout_constraintTop_toBottomOf="@id/year_edit_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
