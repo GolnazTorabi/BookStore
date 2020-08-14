@@ -5,13 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.SettingReportStockClerkFragmentBinding
+import com.book.store.stock.bookstore.pages.setting.new_data.book.SettingNewBookAdapter
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class SettingReportStockClerkFragment : Fragment() {
+class SettingReportStockClerkFragment : DaggerFragment() {
 
     companion object {
         fun newInstance() =
@@ -20,6 +24,10 @@ class SettingReportStockClerkFragment : Fragment() {
 
     private lateinit var viewModel: SettingReportStockClerkViewModel
     private lateinit var binding: SettingReportStockClerkFragmentBinding
+
+    private lateinit var adapter: SettingNewBookAdapter
+    private var bookList = ArrayList<String>()
+
 
     @Inject
     lateinit var factory: ViewModelProvider.Factory
@@ -35,7 +43,35 @@ class SettingReportStockClerkFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        // TODO: Use the ViewModel
+        binding.back.setOnClickListener { activity?.onBackPressed() }
+        initAdapter()
+        getNewBookData()
+        goToAddNewBook()
+        submitData()
+    }
+
+    private fun submitData() {
+        binding.submit.setOnClickListener {
+            //TODO api call
+        }
+    }
+
+    private fun goToAddNewBook() {
+        binding.newReport.setOnClickListener { findNavController().navigate(R.id.action_settingNewBookFragment_to_settingAddNewBookFragment) }
+    }
+
+    private fun initAdapter() {
+        adapter = SettingNewBookAdapter(bookList)
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.list.layoutManager = layoutManager
+        binding.list.adapter = adapter
+    }
+
+    private fun getNewBookData() {
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<ArrayList<String>>("book")?.observe(viewLifecycleOwner, Observer {
+            bookList.addAll(it)
+            adapter.notifyDataSetChanged()
+        })
     }
 
 }
