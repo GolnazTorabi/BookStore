@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.SettingScannerFragmentBinding
 import com.google.zxing.Result
@@ -55,6 +56,12 @@ class SettingScannerFragment : DaggerFragment(), ZXingScannerView.ResultHandler 
             activity, "Contents = " + rawResult!!.text.toString() +
                     ", Format = " + rawResult.barcodeFormat.toString(), Toast.LENGTH_SHORT
         ).show()
+        val list = ArrayList<String>()
+        list.add(0, rawResult.text)
+        list.add(1, rawResult.resultMetadata.toString())
+        list.add(2, rawResult.resultPoints.toString())
+        findNavController().previousBackStackEntry?.savedStateHandle?.set("scanner", list)
+        activity?.onBackPressed()
         // Note:
         // * Wait 2 seconds to resume the preview.
         // * On older devices continuously stopping and resuming camera preview can result in freezing the app.
