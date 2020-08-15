@@ -22,12 +22,21 @@
         android:label="request_search_fragment"
         tools:layout="@layout/request_search_fragment" >
         <action
-            android:id="@+id/action_requestSearchFragment_to_requestAnswerFragment"
-            app:destination="@id/requestAnswerFragment" />
+            android:id="@+id/action_requestSearchFragment_to_requestUpdateFragment"
+            app:destination="@id/requestUpdateFragment" />
     </fragment>
     <fragment
         android:id="@+id/requestAnswerFragment"
         android:name="com.book.store.stock.bookstore.pages.dash_board.request.answer.RequestAnswerFragment"
         android:label="request_answer_fragment"
         tools:layout="@layout/request_answer_fragment" />
+    <fragment
+        android:id="@+id/requestUpdateFragment"
+        android:name="com.book.store.stock.bookstore.RequestUpdateFragment"
+        android:label="request_update_fragment"
+        tools:layout="@layout/request_update_fragment" >
+        <action
+            android:id="@+id/action_requestUpdateFragment_to_requestAnswerFragment"
+            app:destination="@id/requestAnswerFragment" />
+    </fragment>
 </navigation>

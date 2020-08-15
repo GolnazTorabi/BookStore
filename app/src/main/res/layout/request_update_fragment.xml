@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".pages.dash_board.request.search.RequestSearchFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".RequestUpdateFragment">
+
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/back"
@@ -125,34 +125,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:textSize="@dimen/text_size_1"
                 android:textColor="@color/secondary_color"
-                android:text="@string/count"
-                android:layout_marginEnd="@dimen/margin_2"
-                android:layout_marginTop="@dimen/margin_3"
-                android:layout_marginBottom="@dimen/margin_3"/>
-
-            <com.book.store.stock.bookstore.base_ui.CustomTextView
-                android:id="@+id/count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintRight_toRightOf="parent"
-                android:textSize="@dimen/text_size_2"
-                android:textColor="@color/colorAccent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <com.book.store.stock.bookstore.base_ui.CustomTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:textSize="@dimen/text_size_1"
-                android:textColor="@color/secondary_color"
                 android:text="قیمت"
                 android:layout_marginEnd="@dimen/margin_2"
                 android:layout_marginTop="@dimen/margin_3"
@@ -226,6 +198,28 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.book.store.stock.bookstore.base_ui.CustomEditText
+                android:id="@+id/count"
+                android:layout_width="match_parent"
+                android:background="@null"
+                android:layout_marginTop="@dimen/margin_3"
+                android:layout_marginBottom="@dimen/margin_3"
+                android:layout_marginEnd="@dimen/margin_2"
+                android:hint="@string/count"
+                android:textColorHint="@color/secondary_color"
+                android:layout_height="wrap_content"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textSize="@dimen/text_size_2"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
@@ -244,13 +238,12 @@
         android:gravity="bottom">
 
         <com.book.store.stock.bookstore.base_ui.CustomButton
-            android:id="@+id/answer"
+            android:id="@+id/submit"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/margin_2"
             android:layout_weight="1"
             android:background="@drawable/button_default"
-            android:text="بروزرسانی"
+            android:text="ثبت"
             android:textColor="@android:color/white"
             android:textSize="@dimen/text_size_3"/>
 
