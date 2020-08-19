@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/setting_graph"
+    app:startDestination="@id/settingFragment">
+
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.SettingFragment"
+        android:label="setting_fragment"
+        tools:layout="@layout/setting_fragment" >
+        <action
+            android:id="@+id/action_settingFragment_to_settingNewBookFragment"
+            app:destination="@id/settingNewBookFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_settingReportSellerFragment"
+            app:destination="@id/settingReportSellerFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_settingReportStockClerkFragment"
+            app:destination="@id/settingReportStockClerkFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_settingRequestSellerFragment"
+            app:destination="@id/settingRequestSellerFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_settingSearchFragment"
+            app:destination="@id/settingSearchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingSearchFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.search.SettingSearchFragment"
+        android:label="setting_search_fragment"
+        tools:layout="@layout/setting_search_fragment" />
+    <fragment
+        android:id="@+id/settingNewBookFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.new_data.book.SettingNewBookFragment"
+        android:label="setting_new_book_fragment"
+        tools:layout="@layout/setting_new_book_fragment" >
+        <action
+            android:id="@+id/action_settingNewBookFragment_to_settingAddNewBookFragment"
+            app:destination="@id/settingAddNewBookFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingReportSellerFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.report.seller.SettingReportSellerFragment"
+        android:label="setting_report_seller_fragment"
+        tools:layout="@layout/setting_report_seller_fragment" />
+    <fragment
+        android:id="@+id/settingReportStockClerkFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.report.stock_clerk.SettingReportStockClerkFragment"
+        android:label="setting_report_stock_clerk_fragment"
+        tools:layout="@layout/setting_report_stock_clerk_fragment" >
+        <action
+            android:id="@+id/action_settingReportStockClerkFragment_to_settingAddNewBookFragment"
+            app:destination="@id/settingAddNewBookFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingRequestSellerFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.request.seller.SettingRequestSellerFragment"
+        android:label="setting_request_seller_fragment"
+        tools:layout="@layout/setting_request_seller_fragment" >
+        <action
+            android:id="@+id/action_settingRequestSellerFragment_to_settingNewRequestFragment"
+            app:destination="@id/settingNewRequestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingNewRequestFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.request.seller.new_request.SettingNewRequestFragment"
+        android:label="setting_new_request_fragment"
+        tools:layout="@layout/setting_new_request_fragment" />
+    <fragment
+        android:id="@+id/settingAddNewBookFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.new_data.book.add_new_book.SettingAddNewBookFragment"
+        android:label="setting_add_new_book_fragment"
+        tools:layout="@layout/setting_add_new_book_fragment" >
+        <action
+            android:id="@+id/action_settingAddNewBookFragment_to_settingScannerFragment"
+            app:destination="@id/settingScannerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingScannerFragment"
+        android:name="com.book.store.stock.bookstore.pages.setting.new_data.book.add_new_book.scanner.SettingScannerFragment"
+        android:label="setting_scanner_fragment"
+        tools:layout="@layout/setting_scanner_fragment" />
+</navigation>

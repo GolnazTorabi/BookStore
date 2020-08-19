@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">BookStore</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="user_code">کد کاربری</string>
+    <string name="user_name">نام کاربری</string>
+    <string name="password">رمز عبور</string>
+    <string name="login">ورود</string>
+    <string name="register">ثبت نام نکرده اید ؟ </string>
+    <string name="forget_password">فراموشی رمز عبور </string>
+    <string name="name">نام</string>
+    <string name="family">نام خانوادگی</string>
+    <string name="email">ایمیل</string>
+    <string name="register_button_text">ثبت نام</string>
+    <string name="most_sale">پر فروش ها</string>
+    <string name="news">تازه ها</string>
+    <string name="book_name_order">نام کتاب (حروف الفبا)</string>
+    <string name="publisher_order">انتشارات(حروف الفبا)</string>
+    <string name="choose">انتخاب کنید</string>
+    <string name="search">جستجو</string>
+    <string name="reports">گزارشات</string>
+    <string name="requests">درخواست از انبار</string>
+    <string name="new_book">کتاب جدید</string>
+    <string name="exit">خروج</string>
+    <string name="search_hint">برای سرچ بر روی ایکون سرچ کلیک کنید</string>
+    <string name="search_by">سرچ براساس</string>
+    <string name="search_order">مرتب سازی براساس</string>
+    <string name="book_name">نام کتاب</string>
+    <string name="book_writer">نام نویسنده</string>
+    <string name="publisher">انتشارات</string>
+    <string name="topic">موضوع</string>
+    <string name="count">تعداد</string>
+    <string name="book_name_with_name"> کتاب : %s</string>
+    <string name="address"> نشانی : %s</string>
+    <string name="phone"> تلفن : %s</string>
+    <string name="fax"> فکس : %s</string>
+    <string name="book_writer_with_name"> نویسنده : %s</string>
+    <string name="book_publisher_with_name"> انتشارات : %s</string>
+    <string name="count_data"> تعداد : %d</string>
+</resources>
