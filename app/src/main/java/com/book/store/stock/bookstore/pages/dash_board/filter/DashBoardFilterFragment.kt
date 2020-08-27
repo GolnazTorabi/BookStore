@@ -10,9 +10,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.DashBoardFilterFragmentBinding
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class DashBoardFilterFragment : Fragment() {
+class DashBoardFilterFragment : DaggerFragment() {
 
     companion object {
         fun newInstance() = DashBoardFilterFragment()
@@ -21,15 +22,12 @@ class DashBoardFilterFragment : Fragment() {
     private lateinit var viewModel: DashBoardFilterViewModel
     private lateinit var binding: DashBoardFilterFragmentBinding
 
-    @Inject
-    lateinit var factory: ViewModelProvider.Factory
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.dash_board_filter_fragment, container, false)
-        viewModel = ViewModelProvider(this, factory).get(DashBoardFilterViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(DashBoardFilterViewModel::class.java)
         return binding.root
     }
 

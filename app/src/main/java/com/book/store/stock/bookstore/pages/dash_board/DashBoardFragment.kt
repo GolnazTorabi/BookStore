@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.DashBoardFragmentBinding
+import com.book.store.stock.bookstore.pages.MainActivity
 import com.book.store.stock.bookstore.utility.AppSharedPreferences
 import com.book.store.stock.bookstore.utility.LoadMoreListener
 import dagger.android.support.DaggerFragment
@@ -46,6 +47,8 @@ class DashBoardFragment : DaggerFragment(), LoadMoreListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as MainActivity).setStatusBarColor(R.color.colorPrimaryDark)
+        findNavController().addOnDestinationChangedListener(requireActivity() as MainActivity)
         checkIsSeller()
         binding.back.setOnClickListener { activity?.onBackPressed() }
         observeFilterData()
@@ -94,14 +97,14 @@ class DashBoardFragment : DaggerFragment(), LoadMoreListener {
     }
 
     private fun initSellerAdapter() {
-        bookAdapter = DashBoardAdapter(listOf<String>("", "") as ArrayList<String>, this)
+        bookAdapter = DashBoardAdapter(bookList, this)
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.list.layoutManager = layoutManager
         binding.list.adapter = bookAdapter
     }
 
     private fun initStockClerkAdapter() {
-        notificationAdapter = DashBoardNotifAdapter(listOf<String>("", "") as ArrayList<String>, this)
+        notificationAdapter = DashBoardNotifAdapter(notification, this)
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.list.layoutManager = layoutManager
         binding.list.adapter = bookAdapter

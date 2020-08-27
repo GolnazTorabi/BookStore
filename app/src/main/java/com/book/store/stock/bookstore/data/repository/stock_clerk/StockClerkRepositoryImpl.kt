@@ -1,4 +1,6 @@
 package com.book.store.stock.bookstore.data.repository.stock_clerk
 
-class StockClerkRepositoryImpl : StockClerkRepository {
+import javax.inject.Inject
+
+class StockClerkRepositoryImpl  @Inject constructor(): StockClerkRepository {
 }
