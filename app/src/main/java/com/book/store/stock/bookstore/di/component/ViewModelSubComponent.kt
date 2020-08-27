@@ -5,6 +5,8 @@ import com.book.store.stock.bookstore.pages.authentication.register.RegisterView
 import com.book.store.stock.bookstore.pages.authentication.splash.SplashScreenViewModel
 import com.book.store.stock.bookstore.pages.dash_board.DashBoardViewModel
 import com.book.store.stock.bookstore.pages.dash_board.filter.DashBoardFilterViewModel
+import com.book.store.stock.bookstore.pages.order.OrderViewModel
+import com.book.store.stock.bookstore.pages.setting.SettingViewModel
 import dagger.Subcomponent
 
 @Subcomponent
@@ -18,5 +20,7 @@ interface ViewModelSubComponent {
     fun splashViewModel():SplashScreenViewModel
     fun registerViewModel():RegisterViewModel
     fun dashboardViewModel():DashBoardViewModel
-    fun dashboardFilterViewModel():DashBoardFilterViewModel
+    //fun dashboardFilterViewModel():DashBoardFilterViewModel
+    fun orderViewModel():OrderViewModel
+    fun settingViewModel():SettingViewModel
 }

@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.SettingSearchFragmentBinding
 import com.book.store.stock.bookstore.utility.LoadMoreListener
-import javax.inject.Inject
 
 class SettingSearchFragment : DialogFragment(), OnSearchClicked, LoadMoreListener {
 
@@ -20,8 +19,6 @@ class SettingSearchFragment : DialogFragment(), OnSearchClicked, LoadMoreListene
             SettingSearchFragment()
     }
 
-    @Inject
-    lateinit var factory: ViewModelProvider.Factory
 
     private lateinit var viewModel: SettingSearchViewModel
     private lateinit var binding: SettingSearchFragmentBinding
@@ -34,7 +31,7 @@ class SettingSearchFragment : DialogFragment(), OnSearchClicked, LoadMoreListene
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.setting_search_fragment, container, false)
-        viewModel = ViewModelProvider(this, factory).get(SettingSearchViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(SettingSearchViewModel::class.java)
         return binding.root
     }
 

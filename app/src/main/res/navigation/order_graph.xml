@@ -9,5 +9,14 @@
         android:id="@+id/orderFragment"
         android:name="com.book.store.stock.bookstore.pages.order.OrderFragment"
         android:label="order_fragment"
-        tools:layout="@layout/order_fragment" />
+        tools:layout="@layout/order_fragment" >
+        <action
+            android:id="@+id/action_orderFragment_to_orderScannerFragment"
+            app:destination="@id/orderScannerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderScannerFragment"
+        android:name="com.book.store.stock.bookstore.pages.order.scanner.OrderScannerFragment"
+        android:label="fragment_order_scanner"
+        tools:layout="@layout/fragment_order_scanner" />
 </navigation>

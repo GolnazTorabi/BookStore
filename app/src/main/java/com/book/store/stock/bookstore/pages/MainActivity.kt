@@ -135,7 +135,7 @@ class MainActivity : DaggerAppCompatActivity(),
     }
 
 
-    fun setStatusBarColor(color: Int) {
+     fun setStatusBarColor(color: Int) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window: Window = window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)

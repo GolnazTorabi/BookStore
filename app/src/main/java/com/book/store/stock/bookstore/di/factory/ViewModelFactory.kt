@@ -7,6 +7,8 @@ import com.book.store.stock.bookstore.pages.authentication.register.RegisterView
 import com.book.store.stock.bookstore.pages.authentication.splash.SplashScreenViewModel
 import com.book.store.stock.bookstore.pages.dash_board.DashBoardViewModel
 import com.book.store.stock.bookstore.pages.dash_board.filter.DashBoardFilterViewModel
+import com.book.store.stock.bookstore.pages.order.OrderViewModel
+import com.book.store.stock.bookstore.pages.setting.SettingViewModel
 import java.util.concurrent.Callable
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -39,6 +41,8 @@ class ViewModelFactory @Inject constructor(viewModelSubComponent: ViewModelSubCo
         creators[SplashScreenViewModel::class.java] = Callable { viewModelSubComponent!!.splashViewModel() }
         creators[RegisterViewModel::class.java] = Callable { viewModelSubComponent!!.registerViewModel() }
         creators[DashBoardViewModel::class.java] = Callable { viewModelSubComponent!!.dashboardViewModel() }
-        creators[DashBoardFilterViewModel::class.java] = Callable { viewModelSubComponent!!.dashboardFilterViewModel() }
+        //creators[DashBoardFilterViewModel::class.java] = Callable { viewModelSubComponent!!.dashboardFilterViewModel() }
+        creators[OrderViewModel::class.java] = Callable { viewModelSubComponent!!.orderViewModel() }
+        creators[SettingViewModel::class.java] = Callable { viewModelSubComponent!!.settingViewModel() }
     }
 }

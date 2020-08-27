@@ -1,5 +1,6 @@
 package com.book.store.stock.bookstore.pages.authentication.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.text.method.PasswordTransformationMethod
@@ -13,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.LoginFragmentBinding
+import com.book.store.stock.bookstore.pages.MainActivity
 import com.book.store.stock.bookstore.utility.Fonts
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -79,7 +81,8 @@ class LoginFragment : DaggerFragment() {
     private fun loginButtonClicked() {
         if (binding.loginButton.isEnabled) {
             // api call
-            binding.loginButton.setOnClickListener { findNavController().navigate(R.id.action_loginFragment_to_dashboard_graph) }
+            binding.loginButton.setOnClickListener { activity?.finish()
+                startActivity(Intent(context, MainActivity::class.java)) }
         }
     }
 
