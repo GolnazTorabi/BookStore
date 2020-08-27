@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.SettingSearchFragmentBinding
 import com.book.store.stock.bookstore.utility.LoadMoreListener
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-class SettingSearchFragment : DialogFragment(), OnSearchClicked, LoadMoreListener {
+class SettingSearchFragment : DaggerFragment(), OnSearchClicked, LoadMoreListener {
 
     companion object {
         fun newInstance() =
@@ -24,6 +26,9 @@ class SettingSearchFragment : DialogFragment(), OnSearchClicked, LoadMoreListene
     private lateinit var binding: SettingSearchFragmentBinding
     private lateinit var bookAdapter: SettingSearchAdapter
 
+    @Inject
+    lateinit var factory: ViewModelProvider.Factory
+
     private var bookList = ArrayList<String>()
 
     override fun onCreateView(
@@ -31,8 +36,13 @@ class SettingSearchFragment : DialogFragment(), OnSearchClicked, LoadMoreListene
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.setting_search_fragment, container, false)
-        viewModel = ViewModelProvider(this).get(SettingSearchViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory).get(SettingSearchViewModel::class.java)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.back.setOnClickListener { activity?.onBackPressed() }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -41,7 +51,7 @@ class SettingSearchFragment : DialogFragment(), OnSearchClicked, LoadMoreListene
     }
 
     private fun initAdapter() {
-        bookAdapter = SettingSearchAdapter(listOf<String>("", "") as ArrayList<String>, this, this)
+        bookAdapter = SettingSearchAdapter(bookList, this, this)
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.searchList.layoutManager = layoutManager
         binding.searchList.adapter = bookAdapter

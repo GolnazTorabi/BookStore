@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.OrderFragmentBinding
-import com.book.store.stock.bookstore.pages.setting.new_data.book.SettingNewBookAdapter
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -22,11 +21,12 @@ class OrderFragment : DaggerFragment() {
             OrderFragment()
     }
 
+    @Inject
+    lateinit var factory: ViewModelProvider.Factory
+
     private lateinit var viewModel: OrderViewModel
     private lateinit var binding: OrderFragmentBinding
 
-    @Inject
-    lateinit var factory: ViewModelProvider.Factory
 
     private var isSeller: Boolean? = false
     private var bookData = ArrayList<String>()
@@ -46,6 +46,13 @@ class OrderFragment : DaggerFragment() {
         super.onActivityCreated(savedInstanceState)
         binding.back.setOnClickListener { activity?.onBackPressed() }
         checkIsSeller()
+        checkOrderList()
+    }
+
+    private fun checkOrderList() {
+        if (bookData.size != 0) {
+            binding.submit.visibility = View.VISIBLE
+        }
     }
 
     private fun search() {

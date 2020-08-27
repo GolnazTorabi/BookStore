@@ -20,7 +20,7 @@ import dagger.android.support.DaggerFragment
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 
 
-class OrderScannerFragment : DaggerFragment(), ZXingScannerView.ResultHandler {
+class OrderScannerFragment : Fragment(), ZXingScannerView.ResultHandler {
 
     companion object {
         fun newInstance() = OrderScannerFragment()

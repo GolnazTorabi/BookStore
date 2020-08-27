@@ -45,6 +45,7 @@ class SettingNewBookFragment : DaggerFragment() {
         getNewBookData()
         goToAddNewBook()
         submitData()
+        binding.back.setOnClickListener { activity?.onBackPressed() }
 
     }
 

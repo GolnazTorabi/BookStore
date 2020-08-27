@@ -50,8 +50,12 @@ class DashBoardFragment : DaggerFragment(), LoadMoreListener {
         (requireActivity() as MainActivity).setStatusBarColor(R.color.colorPrimaryDark)
         findNavController().addOnDestinationChangedListener(requireActivity() as MainActivity)
         checkIsSeller()
-        binding.back.setOnClickListener { activity?.onBackPressed() }
         observeFilterData()
+        openFilterPage()
+    }
+
+    private fun openFilterPage() {
+        binding.filter.setOnClickListener { findNavController().navigate(R.id.action_dashBoardFragment_to_dashBoardFilterFragment) }
     }
 
     private fun observeFilterData() {

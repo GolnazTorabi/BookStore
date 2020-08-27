@@ -123,6 +123,7 @@
                 app:layout_constraintRight_toRightOf="parent">
 
                 <com.book.store.stock.bookstore.base_ui.CustomButton
+                    android:visibility="gone"
                     android:id="@+id/submit"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -148,6 +149,7 @@
                     android:id="@+id/cancel"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/margin_10"
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:background="@drawable/without_back_button"
                     android:text=" انصراف"

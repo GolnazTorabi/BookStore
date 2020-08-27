@@ -11,9 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.SettingNewRequestFragmentBinding
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class SettingNewRequestFragment : Fragment() {
+class SettingNewRequestFragment : DaggerFragment() {
 
     companion object {
         fun newInstance() =
