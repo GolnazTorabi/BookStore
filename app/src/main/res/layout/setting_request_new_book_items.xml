@@ -26,34 +26,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.book.store.stock.bookstore.base_ui.CustomTextViewBold
-            android:id="@+id/writer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_2"
-            android:layout_marginEnd="@dimen/margin_3"
-            android:gravity="right"
-            android:text="@string/book_writer_with_name"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/text_size_3"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/book_name" />
-
-        <com.book.store.stock.bookstore.base_ui.CustomTextViewBold
-            android:id="@+id/publisher"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_3"
-            android:layout_marginEnd="@dimen/margin_3"
-            android:gravity="right"
-            android:text="@string/book_publisher_with_name"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/text_size_3"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/writer" />
-
-        <com.book.store.stock.bookstore.base_ui.CustomTextViewBold
             android:id="@+id/count"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -65,7 +37,7 @@
             android:textSize="@dimen/text_size_3"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/publisher"
+            app:layout_constraintTop_toBottomOf="@id/book_name"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="@dimen/margin_2"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

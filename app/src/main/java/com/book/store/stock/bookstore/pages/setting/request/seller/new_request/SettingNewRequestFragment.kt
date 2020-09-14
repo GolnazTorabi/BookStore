@@ -48,8 +48,6 @@ class SettingNewRequestFragment : DaggerFragment() {
             binding.submit.setOnClickListener {
                 val list = ArrayList<String>()
                 list.add(0, binding.bookEdit.text.toString())
-                list.add(0, binding.writerEdit.text.toString())
-                list.add(0, binding.publisherEdit.text.toString())
                 list.add(0, binding.countEdit.text.toString())
                 findNavController().previousBackStackEntry?.savedStateHandle?.set("book_data", list)
                 activity?.onBackPressed()
@@ -60,16 +58,6 @@ class SettingNewRequestFragment : DaggerFragment() {
     private fun checkEditText() {
         binding.bookEdit.doAfterTextChanged {
             if (it?.length ?: 0 > 2) {
-                binding.submit.isEnabled = false
-            }
-        }
-        binding.writerEdit.doAfterTextChanged {
-            if (it?.length ?: 0 > 10) {
-                binding.submit.isEnabled = false
-            }
-        }
-        binding.publisherEdit.doAfterTextChanged {
-            if (it?.length ?: 0 > 1) {
                 binding.submit.isEnabled = false
             }
         }
@@ -87,28 +75,6 @@ class SettingNewRequestFragment : DaggerFragment() {
                     binding.submit.isEnabled = false
                     binding.countEditLayout.isErrorEnabled = true
                     binding.countEditLayout.error = "رقم وارد شده باید بزرگ تر از ۰ باشد"
-                }
-            }
-        }
-        binding.publisherEdit.setOnFocusChangeListener { v, hasFocus ->
-            if (hasFocus) {
-                binding.publisherEditLayout.isErrorEnabled = false
-            } else {
-                if (binding.publisherEdit.length() < 4) {
-                    binding.submit.isEnabled = false
-                    binding.publisherEditLayout.isErrorEnabled = true
-                    binding.publisherEditLayout.error = "نام انتشارات  را کامل وارد کنید"
-                }
-            }
-        }
-        binding.writerEdit.setOnFocusChangeListener { v, hasFocus ->
-            if (hasFocus) {
-                binding.writerEditLayout.isErrorEnabled = false
-            } else {
-                if (binding.writerEdit.length() < 4) {
-                    binding.submit.isEnabled = false
-                    binding.writerEditLayout.isErrorEnabled = true
-                    binding.writerEditLayout.error = "نام نویسنده را کامل وارد کنید"
                 }
             }
         }

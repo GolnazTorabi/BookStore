@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.store.stock.bookstore.R
+import com.book.store.stock.bookstore.data.net.response.seller.book_list.order.Item
 import com.book.store.stock.bookstore.databinding.SettingReportStockClerkFragmentBinding
 import com.book.store.stock.bookstore.pages.setting.new_data.book.SettingNewBookAdapter
 import dagger.android.support.DaggerFragment
@@ -26,7 +27,7 @@ class SettingReportStockClerkFragment : DaggerFragment() {
     private lateinit var binding: SettingReportStockClerkFragmentBinding
 
     private lateinit var adapter: SettingNewBookAdapter
-    private var bookList = ArrayList<String>()
+    private var bookList = ArrayList<Item>()
 
 
     @Inject
@@ -52,7 +53,12 @@ class SettingReportStockClerkFragment : DaggerFragment() {
 
     private fun submitData() {
         binding.submit.setOnClickListener {
-            //TODO api call
+            //Todo
+            if (binding.buyBook.isChecked) {
+                //todo add to database
+            } else if (binding.marjo.isChecked) {
+                //todo marjo kardan
+            }
         }
     }
 
@@ -69,7 +75,7 @@ class SettingReportStockClerkFragment : DaggerFragment() {
 
     private fun getNewBookData() {
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<ArrayList<String>>("book")?.observe(viewLifecycleOwner, Observer {
-            bookList.addAll(it)
+            bookList.add(Item(it[0], it[3].toInt()))
             adapter.notifyDataSetChanged()
         })
     }

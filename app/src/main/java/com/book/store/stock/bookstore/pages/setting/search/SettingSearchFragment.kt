@@ -5,16 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.store.stock.bookstore.R
+import com.book.store.stock.bookstore.data.net.response.search.ResponseSearch
 import com.book.store.stock.bookstore.databinding.SettingSearchFragmentBinding
-import com.book.store.stock.bookstore.utility.LoadMoreListener
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class SettingSearchFragment : DaggerFragment(), OnSearchClicked, LoadMoreListener {
+class SettingSearchFragment : DaggerFragment(), OnSearchClicked {
 
     companion object {
         fun newInstance() =
@@ -29,7 +29,7 @@ class SettingSearchFragment : DaggerFragment(), OnSearchClicked, LoadMoreListene
     @Inject
     lateinit var factory: ViewModelProvider.Factory
 
-    private var bookList = ArrayList<String>()
+    private var bookList = ResponseSearch()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,18 +51,22 @@ class SettingSearchFragment : DaggerFragment(), OnSearchClicked, LoadMoreListene
     }
 
     private fun initAdapter() {
-        bookAdapter = SettingSearchAdapter(bookList, this, this)
+        bookAdapter = SettingSearchAdapter(bookList, this)
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.searchList.layoutManager = layoutManager
         binding.searchList.adapter = bookAdapter
     }
 
-    override fun onSearchClicked(text: String, book: Boolean, writer: Boolean, publisher: Boolean, topic: Boolean, mostSale: Boolean, publisherOrder: Boolean, writerName: Boolean) {
-        //todo api call
+    override fun onSearchClicked(text: String, book: Boolean, writer: Boolean, publisher: Boolean, topic: Boolean/*, mostSale: Boolean, publisherOrder: Boolean, writerName: Boolean*/) {
+        viewModel.search(text, book, writer, publisher, topic)
+        viewModel.bookData.observe(viewLifecycleOwner, Observer {
+            it.let {
+                bookList.clear()
+                bookList.addAll(it)
+                bookAdapter.notifyDataSetChanged()
+            }
+        })
     }
 
-    override fun onLoadMore() {
-        //todo api call
-    }
 
 }

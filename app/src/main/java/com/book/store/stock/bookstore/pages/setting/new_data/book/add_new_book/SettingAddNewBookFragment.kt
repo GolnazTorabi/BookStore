@@ -61,44 +61,45 @@ class SettingAddNewBookFragment : DaggerFragment() {
 
     private fun getBardCodeData() {
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<ArrayList<String>>("scanner")?.observe(viewLifecycleOwner, Observer {
-            //scanner data
+            binding.barcode.text = it[0]
         })
     }
 
     private fun checkEditText() {
         binding.bookEdit.doAfterTextChanged {
             if (it?.length ?: 0 > 2) {
-                binding.submit.isEnabled = false
+                checkButton()
             }
+
         }
         binding.priceEdit.doAfterTextChanged {
             if (it?.length ?: 0 > 3) {
-                binding.submit.isEnabled = false
+                checkButton()
             }
         }
         binding.nobatChapEdit.doAfterTextChanged {
             if (it?.length ?: 0 > 0) {
-                binding.submit.isEnabled = false
+                checkButton()
             }
         }
         binding.yearEdit.doAfterTextChanged {
             if (it?.length ?: 0 == 4 && date.shYear != it.toString().toInt()) {
-                binding.submit.isEnabled = false
+                checkButton()
             }
         }
         binding.writerEdit.doAfterTextChanged {
             if (it?.length ?: 0 > 10) {
-                binding.submit.isEnabled = false
+                checkButton()
             }
         }
         binding.publisherEdit.doAfterTextChanged {
             if (it?.length ?: 0 > 1) {
-                binding.submit.isEnabled = false
+                checkButton()
             }
         }
         binding.countEdit.doAfterTextChanged {
             if (it?.length ?: 0 > 0 && it.toString() != "0") {
-                binding.submit.isEnabled = false
+                checkButton()
             }
         }
 
@@ -185,6 +186,18 @@ class SettingAddNewBookFragment : DaggerFragment() {
             }
         }
 
+    }
+
+    private fun checkButton() {
+        binding.submit.isEnabled = (binding.bookEdit.length() > 2
+                && binding.priceEdit.length() > 3
+                && binding.nobatChapEdit.length() > 0
+                && binding.yearEdit.length() == 4
+                && date.shYear != binding.yearEdit.text.toString().toInt()
+                && binding.writerEdit.length() > 10
+                && binding.publisherEdit.length() > 1
+                && binding.countEdit.length() > 0
+                && binding.countEdit.text.toString() != "0")
     }
 
 

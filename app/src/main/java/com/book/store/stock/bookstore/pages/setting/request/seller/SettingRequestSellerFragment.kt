@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.store.stock.bookstore.R
+import com.book.store.stock.bookstore.data.net.response.seller.book_list.order.Item
+import com.book.store.stock.bookstore.data.net.response.seller.book_list.order.RequestOrder
 import com.book.store.stock.bookstore.databinding.SettingRequestSellerFragmentBinding
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -25,7 +28,7 @@ class SettingRequestSellerFragment : DaggerFragment() {
     private lateinit var binding: SettingRequestSellerFragmentBinding
     private lateinit var adapter: SettingRequestSellerAdapter
 
-    private var bookList = ArrayList<String>()
+    private var bookList = ArrayList<Item>()
 
     @Inject
     lateinit var factory: ViewModelProvider.Factory
@@ -51,7 +54,16 @@ class SettingRequestSellerFragment : DaggerFragment() {
 
     private fun submitData() {
         binding.submit.setOnClickListener {
-            //TODO api call
+            val requestOrder = RequestOrder(bookList)
+            viewModel.orderSeller(requestOrder)
+            viewModel.order.observe(viewLifecycleOwner, Observer {
+                it.let {
+                    when (it) {
+                        SettingRequestSellerViewModel.SellerStatus.Success -> activity?.onBackPressed()
+                        SettingRequestSellerViewModel.SellerStatus.Fail -> Toast.makeText(context, "تغییرات ببا موفقیت اعمال نشد", Toast.LENGTH_LONG).show()
+                    }
+                }
+            })
         }
     }
 
@@ -68,7 +80,8 @@ class SettingRequestSellerFragment : DaggerFragment() {
 
     private fun getNewBookData() {
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<ArrayList<String>>("book_data")?.observe(viewLifecycleOwner, Observer {
-            bookList.addAll(it)
+            var bookData = Item(it[0], it[1].toInt())
+            bookList.addAll(bookList)
             adapter.notifyDataSetChanged()
         })
     }

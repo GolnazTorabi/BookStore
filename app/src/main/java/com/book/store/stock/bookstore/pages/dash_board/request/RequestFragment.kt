@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.book.store.stock.bookstore.R
 
 class RequestFragment : Fragment() {
@@ -26,7 +27,7 @@ class RequestFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(RequestViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(RequestViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

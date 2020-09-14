@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.SettingReportSellerFragmentBinding
 import com.book.store.stock.bookstore.utility.LoadMoreListener
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class SettingReportSellerFragment : DialogFragment(), LoadMoreListener {
+class SettingReportSellerFragment : DaggerFragment() {
 
     companion object {
         fun newInstance() =
@@ -39,19 +40,15 @@ class SettingReportSellerFragment : DialogFragment(), LoadMoreListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initSellerAdapter()
-        // TODO: Use the ViewModel
     }
 
     private fun initSellerAdapter() {
-        notificationAdapter = SettingReportSellerAdapter(listOf<String>("", "") as ArrayList<String>, this)
+        notificationAdapter = SettingReportSellerAdapter(listOf<String>("", "") as ArrayList<String>)
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.list.layoutManager = layoutManager
         binding.list.adapter = notificationAdapter
     }
 
-    override fun onLoadMore() {
-        //todo api call
-    }
 
 
 }

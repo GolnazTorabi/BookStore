@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import com.book.store.stock.bookstore.data.db.UserDao
 import com.book.store.stock.bookstore.data.net.ApiInterface
 import com.book.store.stock.bookstore.data.net.BaseResponse
+import com.book.store.stock.bookstore.data.net.response.search.ResponseSearch
 import com.book.store.stock.bookstore.data.net.response.seller.book_list.ResponseBookListSeller
+import com.book.store.stock.bookstore.data.net.response.seller.book_list.order.RequestOrder
 import com.book.store.stock.bookstore.utility.AppSharedPreferences
 import com.book.store.stock.bookstore.utility.ErrorUtils
 import retrofit2.Call
@@ -45,6 +47,44 @@ class SellerRepositoryImpl @Inject constructor(
             }
 
             override fun onResponse(call: Call<ResponseBookListSeller>, response: Response<ResponseBookListSeller>) {
+                if (response.isSuccessful) {
+                    books.value = BaseResponse.success(response.body())
+                } else {
+                    books.value = ErrorUtils.parseError(response)
+                }
+            }
+
+        })
+        return books
+    }
+
+    override fun order(requestOrder: RequestOrder): LiveData<BaseResponse<String>> {
+        val books = MutableLiveData<BaseResponse<String>>()
+        apiInterface.orderSeller(requestOrder).enqueue(object : Callback<String> {
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                books.value = ErrorUtils.parseError()
+            }
+
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                if (response.isSuccessful) {
+                    books.value = BaseResponse.success(response.body())
+                } else {
+                    books.value = ErrorUtils.parseError(response)
+                }
+            }
+
+        })
+        return books
+    }
+
+    override fun search(author: String?, name: String?, ordering: String?, published_date: String?): LiveData<BaseResponse<ResponseSearch>> {
+        val books = MutableLiveData<BaseResponse<ResponseSearch>>()
+        apiInterface.search(author, name, ordering, published_date).enqueue(object : Callback<ResponseSearch> {
+            override fun onFailure(call: Call<ResponseSearch>, t: Throwable) {
+                books.value = ErrorUtils.parseError()
+            }
+
+            override fun onResponse(call: Call<ResponseSearch>, response: Response<ResponseSearch>) {
                 if (response.isSuccessful) {
                     books.value = BaseResponse.success(response.body())
                 } else {

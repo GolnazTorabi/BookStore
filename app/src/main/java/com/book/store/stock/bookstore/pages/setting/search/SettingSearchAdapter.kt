@@ -5,13 +5,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.book.store.stock.bookstore.R
+import com.book.store.stock.bookstore.data.net.response.search.ResponseSearch
 import com.book.store.stock.bookstore.databinding.BookListItemsBinding
 import com.book.store.stock.bookstore.databinding.SettingSearchHeaderBinding
 import com.book.store.stock.bookstore.utility.LoadMoreListener
 
 private var layoutInflater: LayoutInflater? = null
 
-class SettingSearchAdapter(var list: ArrayList<String>, var onLoadMoreListener: LoadMoreListener, var onSearchClicked: OnSearchClicked) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SettingSearchAdapter(var list: ResponseSearch, var onSearchClicked: OnSearchClicked) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     companion object {
@@ -48,23 +49,21 @@ class SettingSearchAdapter(var list: ArrayList<String>, var onLoadMoreListener: 
                     holder.binding.bookNameCheckBox.isChecked,
                     holder.binding.bookWriterCheckBox.isChecked,
                     holder.binding.publisherCheckBox.isChecked,
-                    holder.binding.topicCheckBox.isChecked,
-                    holder.binding.mostSaleCheckBox.isChecked,
+                    holder.binding.topicCheckBox.isChecked
+                    /*holder.binding.mostSaleCheckBox.isChecked,
                     holder.binding.publisherOrderCheckBox.isChecked,
-                    holder.binding.writerCheckBox.isChecked
+                    holder.binding.writerCheckBox.isChecked*/
                 )
             }
         } else if (holder is BookListViewHolder) {
-            holder.binding.name.text = list[position]
-            holder.binding.translatorName.text = list[position]
-            holder.binding.price.text = list[position]
-            holder.binding.stock.text = list[position]
-            holder.binding.publishYear.text = list[position]
-            holder.binding.publishedTime.text = list[position]
-            holder.binding.publisher.text = list[position]
+            holder.binding.name.text = list[position].name
+            holder.binding.translatorName.text = list[position].author
+            holder.binding.price.text = list[position].price.toString()
+            holder.binding.stock.text = list[position].stock.toString()
+            holder.binding.publishYear.text = list[position].published_date
+            holder.binding.publishedTime.text = list[position].edition.toString()
+            //holder.binding.publisher.text = list[position]
         }
-        if (position + 1 == list.size)
-            onLoadMoreListener.onLoadMore()
     }
 
     class BookListViewHolder(var binding: BookListItemsBinding) : RecyclerView.ViewHolder(binding.root) {

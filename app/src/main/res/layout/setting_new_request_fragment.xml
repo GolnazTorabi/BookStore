@@ -68,79 +68,6 @@
     </com.book.store.stock.bookstore.base_ui.CustomTextInputLayout>
 
     <com.book.store.stock.bookstore.base_ui.CustomTextInputLayout
-        android:id="@+id/writer_edit_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_11"
-        android:layout_marginStart="@dimen/margin_4"
-        android:layout_marginTop="@dimen/margin_2"
-        android:layout_marginEnd="@dimen/margin_4"
-        android:hint="@string/book_writer"
-        android:layoutDirection="rtl"
-        android:textColorHint="@color/grayDark"
-        android:textDirection="rtl"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/book_edit_layout">
-
-        <com.book.store.stock.bookstore.base_ui.CustomTextInput
-            android:id="@+id/writer_edit"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@null"
-            android:clickable="true"
-            android:digits="ضصثقفغعهخحجچگکمنتالبیسشظطزرذدپوكٓژٰ‌ٔءؤئإيأآةًٌٍَُِّْ"
-            android:gravity="right"
-            android:inputType="text"
-            android:maxLength="30"
-            android:nextFocusDown="@id/publisher_edit"
-            android:paddingStart="@dimen/margin_3"
-            android:paddingTop="@dimen/margin_4"
-            android:paddingEnd="@dimen/margin_3"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/grayDark"
-            android:textSize="@dimen/text_size_2"
-            tools:ignore="RtlSymmetry" />
-
-    </com.book.store.stock.bookstore.base_ui.CustomTextInputLayout>
-
-    <com.book.store.stock.bookstore.base_ui.CustomTextInputLayout
-        android:id="@+id/publisher_edit_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_11"
-        android:layout_marginStart="@dimen/margin_4"
-        android:layout_marginTop="@dimen/margin_2"
-        android:layout_marginEnd="@dimen/margin_4"
-        android:hint="@string/publisher"
-        android:layoutDirection="rtl"
-        android:textColorHint="@color/grayDark"
-        android:textDirection="rtl"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/writer_edit_layout">
-
-        <com.book.store.stock.bookstore.base_ui.CustomTextInput
-            android:id="@+id/publisher_edit"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@null"
-            android:clickable="true"
-            android:digits="ضصثقفغعهخحجچگکمنتالبیسشظطزرذدپوكٓژٰ‌ٔءؤئإيأآةًٌٍَُِّْ"
-            android:gravity="right"
-            android:inputType="text"
-            android:maxLength="30"
-            android:paddingStart="@dimen/margin_3"
-            android:paddingTop="@dimen/margin_4"
-            android:paddingEnd="@dimen/margin_3"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/grayDark"
-            android:textSize="@dimen/text_size_2"
-            tools:ignore="RtlSymmetry" />
-
-    </com.book.store.stock.bookstore.base_ui.CustomTextInputLayout>
-
-    <com.book.store.stock.bookstore.base_ui.CustomTextInputLayout
         android:id="@+id/count_edit_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:layout_width="match_parent"
@@ -154,7 +81,7 @@
         android:textDirection="rtl"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/publisher_edit_layout">
+        app:layout_constraintTop_toBottomOf="@id/book_edit_layout">
 
         <com.book.store.stock.bookstore.base_ui.CustomTextInput
             android:id="@+id/count_edit"

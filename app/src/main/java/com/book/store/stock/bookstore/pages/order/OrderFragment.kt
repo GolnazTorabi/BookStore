@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.store.stock.bookstore.R
+import com.book.store.stock.bookstore.data.net.response.BookData
+import com.book.store.stock.bookstore.data.net.response.seller.book_list.order.RequestOrder
 import com.book.store.stock.bookstore.databinding.OrderFragmentBinding
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -29,7 +32,8 @@ class OrderFragment : DaggerFragment() {
 
 
     private var isSeller: Boolean? = false
-    private var bookData = ArrayList<String>()
+    private var bookData = ArrayList<BookData>()
+    private lateinit var request: RequestOrder
     private lateinit var adapter: OrderAdapter
 
 
@@ -97,7 +101,15 @@ class OrderFragment : DaggerFragment() {
 
     private fun submit() {
         binding.submit.setOnClickListener {
-            //TODO api call
+            viewModel.orderSeller(request)
+            viewModel.order.observe(viewLifecycleOwner, Observer {
+                it.let {
+                    when (it) {
+                        OrderViewModel.SellerStatus.Success -> activity?.onBackPressed()
+                        OrderViewModel.SellerStatus.Fail -> Toast.makeText(context, "تغییرات اعمال نشد", Toast.LENGTH_LONG).show()
+                    }
+                }
+            })
         }
     }
 

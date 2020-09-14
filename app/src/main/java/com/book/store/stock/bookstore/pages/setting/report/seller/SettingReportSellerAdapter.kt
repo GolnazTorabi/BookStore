@@ -8,7 +8,7 @@ import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.databinding.NotificationListBinding
 import com.book.store.stock.bookstore.utility.LoadMoreListener
 
-class SettingReportSellerAdapter (var list: ArrayList<String>,var onLoadMoreListener: LoadMoreListener): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SettingReportSellerAdapter (var list: ArrayList<String>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     private var layoutInflater: LayoutInflater? = null
@@ -29,9 +29,6 @@ class SettingReportSellerAdapter (var list: ArrayList<String>,var onLoadMoreList
             holder.binding.notificationText.text = list[position]
             holder.binding.notificationTime.text = list[position]
         }
-
-        if (position==list.size-1)
-            onLoadMoreListener.onLoadMore()
     }
     class NotificationListViewHolder(var binding: NotificationListBinding) : RecyclerView.ViewHolder(binding.root) {
 

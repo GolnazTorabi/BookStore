@@ -181,7 +181,7 @@
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
-    <com.book.store.stock.bookstore.base_ui.CustomTextView
+<!--    <com.book.store.stock.bookstore.base_ui.CustomTextView
         android:id="@+id/title_search_order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -190,7 +190,8 @@
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/text_size_3"
         app:layout_constraintRight_toRightOf="@id/search_order_items"
-        app:layout_constraintTop_toBottomOf="@id/hint" />
+        app:layout_constraintTop_toBottomOf="@id/hint" />-->
+<!--
 
     <LinearLayout
         android:id="@+id/check_box_order"
@@ -284,6 +285,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
+-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
