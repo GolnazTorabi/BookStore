@@ -31,7 +31,7 @@ internal class AppModule {
     @Inject
     @Singleton
     @Provides
-    fun provideApiClient(appSharedPreferences: AppSharedPreferences): ApiInterface {
+    fun provideApiClient(): ApiInterface {
         val builder = OkHttpClient.Builder()
         val logging = HttpLoggingInterceptor()
         logging.setLevel(HttpLoggingInterceptor.Level.BASIC)

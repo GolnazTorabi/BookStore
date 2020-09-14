@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.store.stock.bookstore.R
+import com.book.store.stock.bookstore.data.net.response.seller.book_list.ResponseBookListSeller
 import com.book.store.stock.bookstore.databinding.DashBoardFragmentBinding
 import com.book.store.stock.bookstore.pages.MainActivity
 import com.book.store.stock.bookstore.utility.AppSharedPreferences
@@ -28,10 +29,11 @@ class DashBoardFragment : DaggerFragment(), LoadMoreListener {
     @Inject
     lateinit var factory: ViewModelProvider.Factory
 
-    private var bookList = ArrayList<String>()
+    private var bookList = ResponseBookListSeller()
     private var notification = ArrayList<String>()
 
     private var isSeller: Boolean? = false
+    private var filter: String? = null
 
     private lateinit var bookAdapter: DashBoardAdapter
     private lateinit var notificationAdapter: DashBoardNotifAdapter
@@ -61,20 +63,50 @@ class DashBoardFragment : DaggerFragment(), LoadMoreListener {
     private fun observeFilterData() {
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String>("mostSale")?.observe(viewLifecycleOwner, Observer {
             when (it) {
-                "mostSale" -> getBookData("mostSale")
-                "news" -> getBookData("news")
-                "bookName" -> getBookData("bookName")
-                "publisher" -> getBookData("publisher")
+                "mostSale" -> {
+                    filter = "mostSale"
+                    getBookData(filter ?: "")
+                }
+                "news" -> {
+                    filter = "news"
+                    getBookData(filter ?: "")
+                }
+                "bookName" -> {
+                    filter = "bookName"
+                    getBookData(filter ?: "")
+                }
+                "publisher" -> {
+                    filter = "publisher"
+                    getBookData(filter ?: "")
+                }
             }
         })
     }
 
     private fun getBookData(data: String) {
-        if (data.isBlank()) {
-            //first data
-        } else {
 
-        }
+        viewModel.requestGetAllBook(data)
+        observeBookData()
+    }
+
+    private fun observeBookData() {
+        viewModel.bookStatus.observe(viewLifecycleOwner, Observer {
+            it.let {
+                when (it) {
+                    DashBoardViewModel.DashboardStatus.ShowLoading -> { /*todo show loading*/
+                    }
+                    DashBoardViewModel.DashboardStatus.HideLoading -> { /*todo hide loading*/
+                    }
+                    DashBoardViewModel.DashboardStatus.Fail -> getBookData("")
+
+                }
+            }
+        })
+        viewModel.books.observe(viewLifecycleOwner, Observer {
+            bookList.clear()
+            bookList.addAll(it)
+            bookAdapter.notifyDataSetChanged()
+        })
     }
 
     private fun checkIsSeller() {
@@ -90,14 +122,20 @@ class DashBoardFragment : DaggerFragment(), LoadMoreListener {
                         binding.filter.setOnClickListener { findNavController().navigate(R.id.action_dashBoardFragment_to_dashBoardFilterFragment) }
                         isSeller = true
                         initSellerAdapter()
+                        getBookData("")
                     }
                     DashBoardViewModel.SellerStock.Stock -> {
                         isSeller = false
                         initStockClerkAdapter()
+                        getNotifications()
                     }
                 }
             }
         })
+    }
+
+    private fun getNotifications() {
+        //todo get stock notifications
     }
 
     private fun initSellerAdapter() {
@@ -115,11 +153,17 @@ class DashBoardFragment : DaggerFragment(), LoadMoreListener {
     }
 
     override fun onLoadMore() {
-        when (isSeller) {
-            true -> {
+        /* when (isSeller) {
+             true -> {
+                 when (filter?.isBlank()) {
+                     true -> {*//*with no filter api call*//*
+                    }
+                    else -> {
+                    }
+                }
             }
             else -> {
             }
-        }
+        }*/
     }
 }

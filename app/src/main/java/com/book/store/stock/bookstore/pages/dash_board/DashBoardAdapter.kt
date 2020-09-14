@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.book.store.stock.bookstore.R
+import com.book.store.stock.bookstore.data.net.response.seller.book_list.ResponseBookListSeller
 import com.book.store.stock.bookstore.databinding.BookListItemsBinding
 import com.book.store.stock.bookstore.utility.LoadMoreListener
 
-class DashBoardAdapter(var list: ArrayList<String>,var onLoadMoreListener: LoadMoreListener): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class DashBoardAdapter(var list: ResponseBookListSeller,var onLoadMoreListener: LoadMoreListener): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     private var layoutInflater: LayoutInflater? = null
@@ -26,13 +27,13 @@ class DashBoardAdapter(var list: ArrayList<String>,var onLoadMoreListener: LoadM
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is BookListViewHolder){
-            holder.binding.name.text = list[position]
-            holder.binding.translatorName.text = list[position]
-            holder.binding.price.text = list[position]
-            holder.binding.stock.text = list[position]
-            holder.binding.publishYear.text = list[position]
-            holder.binding.publishedTime.text = list[position]
-            holder.binding.publisher.text = list[position]
+            holder.binding.name.text = list[position].name
+            //holder.binding.translatorName.text =
+            holder.binding.price.text = list[position].price.toString()
+            holder.binding.stock.text = list[position].stock.toString()
+            holder.binding.publishYear.text = list[position].edition.toString()
+            holder.binding.publishedTime.text = list[position].published_date.toString()
+            holder.binding.publisher.text = list[position].author
         }
 
         if (position==list.size-1)

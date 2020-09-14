@@ -5,9 +5,12 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 
 @Entity
-data class User (
+data class User(
     @PrimaryKey
     @Expose
-    var id:Int,
-    var name:String
+    val email: String? = null,
+    val role: String? = null,
+    val lastName: String? = null,
+    val firstName: String? = null
+
 )

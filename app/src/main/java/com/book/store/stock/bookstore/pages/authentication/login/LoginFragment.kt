@@ -7,9 +7,10 @@ import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.book.store.stock.bookstore.R
@@ -81,9 +82,42 @@ class LoginFragment : DaggerFragment() {
     private fun loginButtonClicked() {
         if (binding.loginButton.isEnabled) {
             // api call
-            binding.loginButton.setOnClickListener { activity?.finish()
-                startActivity(Intent(context, MainActivity::class.java)) }
+            binding.loginButton.setOnClickListener {
+                viewModel.requestForToken(binding.usernameEdit.text.toString(), binding.passwordEdit.text.toString())
+                observeRefresh()
+
+            }
         }
+    }
+
+    private fun observeRefresh() {
+        viewModel.getTokenStatus.observe(viewLifecycleOwner, Observer {
+            it.let {
+                when (it) {
+                    LoginViewModel.LoginStatus.Success -> loginUser()
+                    LoginViewModel.LoginStatus.NoInternet -> noInternetConnection()
+                }
+            }
+        })
+        viewModel.errorMessage.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+        })
+    }
+
+    private fun noInternetConnection() {
+        //todo no internet
+    }
+
+    private fun loginUser() {
+        viewModel.requestUserRole()
+        observeIsSeller()
+    }
+
+    private fun observeIsSeller() {
+        viewModel.seller.observe(viewLifecycleOwner, Observer {
+            activity?.finish()
+            startActivity(Intent(context, MainActivity::class.java))
+        })
     }
 
     private fun checkEditTexts() {
