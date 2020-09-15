@@ -5,11 +5,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.book.store.stock.bookstore.R
+import com.book.store.stock.bookstore.data.net.response.ResponseRequestItem
 import com.book.store.stock.bookstore.databinding.BookListItemsBinding
 import com.book.store.stock.bookstore.databinding.NotificationListBinding
 import com.book.store.stock.bookstore.utility.LoadMoreListener
 
-class DashBoardNotifAdapter (var list: ArrayList<String>,var onLoadMoreListener: LoadMoreListener): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class DashBoardNotifAdapter (var list: ArrayList<ResponseRequestItem>, var onLoadMoreListener: LoadMoreListener,var onItemSelect: onItemSelect): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     private var layoutInflater: LayoutInflater? = null
@@ -27,8 +28,9 @@ class DashBoardNotifAdapter (var list: ArrayList<String>,var onLoadMoreListener:
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is NotificationListViewHolder){
-            holder.binding.notificationText.text = list[position]
-            holder.binding.notificationTime.text = list[position]
+            holder.binding.layout.setOnClickListener {
+                onItemSelect.select((position+1).toString())
+            }
         }
 
         if (position==list.size-1)

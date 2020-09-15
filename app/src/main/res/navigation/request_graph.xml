@@ -10,17 +10,12 @@
         android:name="com.book.store.stock.bookstore.pages.dash_board.request.RequestFragment"
         android:label="request_fragment"
         tools:layout="@layout/request_fragment">
-        <action
-            android:id="@+id/action_requestFragment_to_requestAnswerFragment"
-            app:destination="@id/requestAnswerFragment" />
+        <argument
+            android:name="id"
+            android:defaultValue="None" />
         <action
             android:id="@+id/action_requestFragment_to_setting_graph"
             app:destination="@id/setting_graph" />
     </fragment>
-    <fragment
-        android:id="@+id/requestAnswerFragment"
-        android:name="com.book.store.stock.bookstore.pages.dash_board.request.answer.RequestAnswerFragment"
-        android:label="request_answer_fragment"
-        tools:layout="@layout/request_answer_fragment" />
     <action android:id="@+id/action_global_requestFragment" app:destination="@id/requestFragment" />
 </navigation>

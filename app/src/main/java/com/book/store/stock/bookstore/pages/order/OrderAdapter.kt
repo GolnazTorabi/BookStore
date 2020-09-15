@@ -6,9 +6,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.data.net.response.BookData
+import com.book.store.stock.bookstore.data.net.response.seller.book_list.order.Item
 import com.book.store.stock.bookstore.databinding.SettingRequestNewBookItemsBinding
 
-class OrderAdapter(var list: ArrayList<BookData>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class OrderAdapter(var list: ArrayList<Item>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     private var layoutInflater: LayoutInflater? = null
@@ -26,10 +27,8 @@ class OrderAdapter(var list: ArrayList<BookData>) : RecyclerView.Adapter<Recycle
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is SettingRequestNewBookItemsViewHolder) {
-            holder.binding.bookName.text = list[position].book.name
-            holder.binding.writer.text = list[position].book.author
-            holder.binding.publisher.text = list[position].book.publisher
-            holder.binding.count.text = list[position].book.stock.toString()
+            holder.binding.bookName.text = list[position].book_name
+            holder.binding.count.text = list[position].quantity.toString()
         }
     }
 

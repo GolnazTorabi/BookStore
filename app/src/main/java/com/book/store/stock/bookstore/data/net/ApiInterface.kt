@@ -1,5 +1,7 @@
 package com.book.store.stock.bookstore.data.net
 
+import com.book.store.stock.bookstore.data.net.response.ResponseOrderDetail
+import com.book.store.stock.bookstore.data.net.response.ResponseRequest
 import com.book.store.stock.bookstore.data.net.response.search.ResponseSearch
 import com.book.store.stock.bookstore.data.net.response.seller.book_list.ResponseBookListSeller
 import com.book.store.stock.bookstore.data.net.response.seller.book_list.order.RequestOrder
@@ -35,13 +37,19 @@ interface ApiInterface {
     /*@GET("/orders/")
     fun getOrderStock():Call*/
 
-    @GET("books/?author=&name=%DA%A9%D8%AA%D8%A7%D8%A8+%D8%AE%D9%88%D8%A8%DB%8C+%D8%A8%D9%88%D8%AF&ordering=name&published_date=")
+    @GET("books/?author=&name=&ordering=&published_date=")
     fun search(
         @Query("author") author: String? = null,
         @Query("name") name: String? = null,
         @Query("ordering") ordering: String? = null,
         @Query("published_date") published_date: String? = null
     ): Call<ResponseSearch>
+
+    @GET("/items/")
+    fun request():Call<ResponseRequest>
+
+    @GET("/orders/{id}")
+    fun requestDetail(@Path("id")id:String):Call<ResponseOrderDetail>
 
     //stockClerk
 

@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import com.book.store.stock.bookstore.data.db.UserDao
 import com.book.store.stock.bookstore.data.net.ApiInterface
 import com.book.store.stock.bookstore.data.net.BaseResponse
+import com.book.store.stock.bookstore.data.net.response.ResponseOrderDetail
+import com.book.store.stock.bookstore.data.net.response.ResponseRequest
 import com.book.store.stock.bookstore.data.net.response.search.ResponseSearch
 import com.book.store.stock.bookstore.data.net.response.seller.book_list.ResponseBookListSeller
 import com.book.store.stock.bookstore.data.net.response.seller.book_list.order.RequestOrder
@@ -85,6 +87,44 @@ class SellerRepositoryImpl @Inject constructor(
             }
 
             override fun onResponse(call: Call<ResponseSearch>, response: Response<ResponseSearch>) {
+                if (response.isSuccessful) {
+                    books.value = BaseResponse.success(response.body())
+                } else {
+                    books.value = ErrorUtils.parseError(response)
+                }
+            }
+
+        })
+        return books
+    }
+
+    override fun request(): LiveData<BaseResponse<ResponseRequest>> {
+        val books = MutableLiveData<BaseResponse<ResponseRequest>>()
+        apiInterface.request().enqueue(object : Callback<ResponseRequest> {
+            override fun onFailure(call: Call<ResponseRequest>, t: Throwable) {
+                books.value = ErrorUtils.parseError()
+            }
+
+            override fun onResponse(call: Call<ResponseRequest>, response: Response<ResponseRequest>) {
+                if (response.isSuccessful) {
+                    books.value = BaseResponse.success(response.body())
+                } else {
+                    books.value = ErrorUtils.parseError(response)
+                }
+            }
+
+        })
+        return books
+    }
+
+    override fun requestDetail(id: String): LiveData<BaseResponse<ResponseOrderDetail>> {
+        val books = MutableLiveData<BaseResponse<ResponseOrderDetail>>()
+        apiInterface.requestDetail(id).enqueue(object : Callback<ResponseOrderDetail> {
+            override fun onFailure(call: Call<ResponseOrderDetail>, t: Throwable) {
+                books.value = ErrorUtils.parseError()
+            }
+
+            override fun onResponse(call: Call<ResponseOrderDetail>, response: Response<ResponseOrderDetail>) {
                 if (response.isSuccessful) {
                     books.value = BaseResponse.success(response.body())
                 } else {

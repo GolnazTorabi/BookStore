@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.store.stock.bookstore.R
-import com.book.store.stock.bookstore.data.net.response.BookData
+import com.book.store.stock.bookstore.data.net.response.seller.book_list.order.Item
 import com.book.store.stock.bookstore.data.net.response.seller.book_list.order.RequestOrder
 import com.book.store.stock.bookstore.databinding.OrderFragmentBinding
 import dagger.android.support.DaggerFragment
@@ -32,7 +32,7 @@ class OrderFragment : DaggerFragment() {
 
 
     private var isSeller: Boolean? = false
-    private var bookData = ArrayList<BookData>()
+    private var bookData = ArrayList<Item>()
     private lateinit var request: RequestOrder
     private lateinit var adapter: OrderAdapter
 
@@ -123,7 +123,10 @@ class OrderFragment : DaggerFragment() {
 
     private fun getBardCodeData() {
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<ArrayList<String>>("scanner_order")?.observe(viewLifecycleOwner, Observer {
-            //scanner data
+            bookData.clear()
+            bookData.add(Item(it[0], it[1].toInt()))
+            request = RequestOrder(bookData)
+            adapter.notifyDataSetChanged()
         })
     }
 

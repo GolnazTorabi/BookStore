@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.store.stock.bookstore.R
+import com.book.store.stock.bookstore.data.net.response.ResponseRequestItem
 import com.book.store.stock.bookstore.data.net.response.seller.book_list.ResponseBookListSeller
 import com.book.store.stock.bookstore.databinding.DashBoardFragmentBinding
 import com.book.store.stock.bookstore.pages.MainActivity
@@ -18,7 +20,7 @@ import com.book.store.stock.bookstore.utility.LoadMoreListener
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class DashBoardFragment : DaggerFragment(), LoadMoreListener {
+class DashBoardFragment : DaggerFragment(), LoadMoreListener,onItemSelect {
 
     private lateinit var viewModel: DashBoardViewModel
     private lateinit var binding: DashBoardFragmentBinding
@@ -30,7 +32,7 @@ class DashBoardFragment : DaggerFragment(), LoadMoreListener {
     lateinit var factory: ViewModelProvider.Factory
 
     private var bookList = ResponseBookListSeller()
-    private var notification = ArrayList<String>()
+    private var notification = ArrayList<ResponseRequestItem>()
 
     private var isSeller: Boolean? = false
     private var filter: String? = null
@@ -135,7 +137,14 @@ class DashBoardFragment : DaggerFragment(), LoadMoreListener {
     }
 
     private fun getNotifications() {
-        //todo get stock notifications
+        viewModel.getNotifications()
+        viewModel.request.observe(viewLifecycleOwner, Observer {
+            it.let {
+                notification.clear()
+                notification.addAll(it)
+                notificationAdapter.notifyDataSetChanged()
+            }
+        })
     }
 
     private fun initSellerAdapter() {
@@ -146,7 +155,7 @@ class DashBoardFragment : DaggerFragment(), LoadMoreListener {
     }
 
     private fun initStockClerkAdapter() {
-        notificationAdapter = DashBoardNotifAdapter(notification, this)
+        notificationAdapter = DashBoardNotifAdapter(notification, this,this)
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.list.layoutManager = layoutManager
         binding.list.adapter = bookAdapter
@@ -165,5 +174,12 @@ class DashBoardFragment : DaggerFragment(), LoadMoreListener {
             else -> {
             }
         }*/
+    }
+
+    override fun select(id: String) {
+        val bundle = bundleOf(
+            "id" to id
+        )
+       findNavController().navigate(R.id.action_dashBoardFragment_to_request_graph,bundle)
     }
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -11,7 +12,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.book.store.stock.bookstore.R
 import com.book.store.stock.bookstore.data.net.response.seller.book_list.order.Item
+import com.book.store.stock.bookstore.data.net.response.seller.book_list.order.RequestOrder
 import com.book.store.stock.bookstore.databinding.SettingNewBookFragmentBinding
+import com.book.store.stock.bookstore.pages.order.OrderViewModel
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -27,6 +30,7 @@ class SettingNewBookFragment : DaggerFragment() {
     private lateinit var adapter: SettingNewBookAdapter
 
     private var bookList = ArrayList<Item>()
+    private lateinit var request: RequestOrder
 
     @Inject
     lateinit var factory: ViewModelProvider.Factory
@@ -52,7 +56,15 @@ class SettingNewBookFragment : DaggerFragment() {
 
     private fun submitData() {
         binding.submit.setOnClickListener {
-            //TODO api call
+            viewModel.orderSeller(request)
+            viewModel.order.observe(viewLifecycleOwner, Observer {
+                it.let {
+                    when (it) {
+                        SettingNewBookViewModel.SellerStatus.Success -> activity?.onBackPressed()
+                        SettingNewBookViewModel.SellerStatus.Fail -> Toast.makeText(context, "تغییرات اعمال نشد", Toast.LENGTH_LONG).show()
+                    }
+                }
+            })
         }
     }
 
@@ -69,7 +81,9 @@ class SettingNewBookFragment : DaggerFragment() {
 
     private fun getNewBookData() {
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<ArrayList<String>>("book")?.observe(viewLifecycleOwner, Observer {
+            bookList.clear()
             bookList.add(Item(it[0],it[3].toInt()))
+            request = RequestOrder(bookList)
             adapter.notifyDataSetChanged()
         })
     }
