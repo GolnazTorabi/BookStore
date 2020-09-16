@@ -9,7 +9,6 @@ import com.book.store.stock.bookstore.data.net.response.user.User
 @Dao
 interface UserDao {
 
-
     @Query("SELECT * FROM user limit 1")
     fun get(): User
 

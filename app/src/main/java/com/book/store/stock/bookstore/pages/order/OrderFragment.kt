@@ -61,7 +61,14 @@ class OrderFragment : DaggerFragment() {
 
     private fun search() {
         binding.search.setOnClickListener {
-            //api call
+            viewModel.orderStock(binding.searchEdit.text.toString())
+            viewModel.orderStock.observe(viewLifecycleOwner, Observer {
+                it.let {
+                    binding.address.text = it[0].website
+                    binding.phone.text = it[0].phone_number.toString()
+                    binding.fax.text = it[0].fax_number
+                }
+            })
         }
     }
 

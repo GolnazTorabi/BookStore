@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.book.store.stock.bookstore.data.db.UserDao
 import com.book.store.stock.bookstore.data.net.ApiInterface
 import com.book.store.stock.bookstore.data.net.BaseResponse
+import com.book.store.stock.bookstore.data.net.response.RegisterRequest
 import com.book.store.stock.bookstore.data.net.response.user.ResponseToken
 import com.book.store.stock.bookstore.data.net.response.user.User
 import com.book.store.stock.bookstore.utility.AppSharedPreferences
@@ -51,6 +52,26 @@ class UserRepositoryImpl @Inject constructor(
                     if (response.isSuccessful) {
                         user.value = BaseResponse.success(response.body())
                         saveUser(response.body())
+                    } else {
+                        user.value = ErrorUtils.parseError(response)
+                    }
+                }
+            }
+        )
+        return user
+    }
+
+    override fun register(registerRequest: RegisterRequest): LiveData<BaseResponse<RegisterRequest>> {
+        val user = MutableLiveData<BaseResponse<RegisterRequest>>()
+        apiInterface.register(registerRequest).enqueue(
+            object : retrofit2.Callback<RegisterRequest> {
+                override fun onFailure(call: Call<RegisterRequest>, t: Throwable) {
+                    user.value = ErrorUtils.parseError()
+                }
+
+                override fun onResponse(call: Call<RegisterRequest>, response: Response<RegisterRequest>) {
+                    if (response.isSuccessful) {
+                        user.value = BaseResponse.success(response.body())
                     } else {
                         user.value = ErrorUtils.parseError(response)
                     }

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.book.store.stock.bookstore.data.db.UserDao
 import com.book.store.stock.bookstore.data.net.ApiInterface
 import com.book.store.stock.bookstore.data.net.BaseResponse
+import com.book.store.stock.bookstore.data.net.response.PublisherList
 import com.book.store.stock.bookstore.data.net.response.ResponseOrderDetail
 import com.book.store.stock.bookstore.data.net.response.ResponseRequest
 import com.book.store.stock.bookstore.data.net.response.search.ResponseSearch
@@ -125,6 +126,25 @@ class SellerRepositoryImpl @Inject constructor(
             }
 
             override fun onResponse(call: Call<ResponseOrderDetail>, response: Response<ResponseOrderDetail>) {
+                if (response.isSuccessful) {
+                    books.value = BaseResponse.success(response.body())
+                } else {
+                    books.value = ErrorUtils.parseError(response)
+                }
+            }
+
+        })
+        return books
+    }
+
+    override fun getPublisher(name: String): LiveData<BaseResponse<PublisherList>> {
+        val books = MutableLiveData<BaseResponse<PublisherList>>()
+        apiInterface.getPublishe(name).enqueue(object : Callback<PublisherList> {
+            override fun onFailure(call: Call<PublisherList>, t: Throwable) {
+                books.value = ErrorUtils.parseError()
+            }
+
+            override fun onResponse(call: Call<PublisherList>, response: Response<PublisherList>) {
                 if (response.isSuccessful) {
                     books.value = BaseResponse.success(response.body())
                 } else {

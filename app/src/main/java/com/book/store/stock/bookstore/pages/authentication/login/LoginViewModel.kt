@@ -30,6 +30,9 @@ class LoginViewModel @Inject constructor(var appSharedPreferences: AppSharedPref
             true -> seller.value = IsSeller.Seller
             false -> seller.value = IsSeller.StockClerk
         }
+        if(appSharedPreferences.getSeller()){
+            appSharedPreferences.isSeller(false)
+        }
     }
 
     enum class IsSeller {

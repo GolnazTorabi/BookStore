@@ -9,8 +9,11 @@ import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.book.store.stock.bookstore.R
+import com.book.store.stock.bookstore.data.net.response.RegisterRequest
 import com.book.store.stock.bookstore.databinding.RegisterFragmentBinding
 import com.book.store.stock.bookstore.utility.Fonts
 import dagger.android.support.DaggerFragment
@@ -63,7 +66,15 @@ class RegisterFragment : DaggerFragment() {
     private fun registerUser() {
         if(binding.registerButton.isEnabled){
             binding.registerButton.setOnClickListener {
-                //todo api call
+               viewModel.register(RegisterRequest(binding.emailEdit.text.toString(),
+                   binding.nameEdit.text.toString(),binding.familyEdit.text.toString(),binding.passwordEdit.text.toString(),binding.codeEdit.text.toString(),"se",binding.emailEdit.text.toString()))
+                viewModel.getTokenStatus.observe(viewLifecycleOwner, Observer {
+                    it.let {
+                        when(it){
+                            RegisterViewModel.LoginStatus.Success ->findNavController().navigate(R.id.action_loginFragment_to_dashboard_graph)
+                        }
+                    }
+                })
             }
         }
     }

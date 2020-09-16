@@ -1,5 +1,7 @@
 package com.book.store.stock.bookstore.data.net
 
+import com.book.store.stock.bookstore.data.net.response.PublisherList
+import com.book.store.stock.bookstore.data.net.response.RegisterRequest
 import com.book.store.stock.bookstore.data.net.response.ResponseOrderDetail
 import com.book.store.stock.bookstore.data.net.response.ResponseRequest
 import com.book.store.stock.bookstore.data.net.response.search.ResponseSearch
@@ -50,6 +52,12 @@ interface ApiInterface {
 
     @GET("/orders/{id}")
     fun requestDetail(@Path("id")id:String):Call<ResponseOrderDetail>
+
+    @POST("/register/")
+    fun register(registerRequest: RegisterRequest):Call<RegisterRequest>
+
+    @GET("/publishers")
+    fun getPublishe(@Query("name")name:String):Call<PublisherList>
 
     //stockClerk
 

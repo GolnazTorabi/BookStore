@@ -2,6 +2,7 @@ package com.book.store.stock.bookstore.data.repository.seller
 
 import androidx.lifecycle.LiveData
 import com.book.store.stock.bookstore.data.net.BaseResponse
+import com.book.store.stock.bookstore.data.net.response.PublisherList
 import com.book.store.stock.bookstore.data.net.response.ResponseOrderDetail
 import com.book.store.stock.bookstore.data.net.response.ResponseRequest
 import com.book.store.stock.bookstore.data.net.response.search.ResponseSearch
@@ -24,4 +25,6 @@ interface SellerRepository {
 
     fun request(): LiveData<BaseResponse<ResponseRequest>>
     fun requestDetail(id:String):LiveData<BaseResponse<ResponseOrderDetail>>
+
+    fun getPublisher(name:String):LiveData<BaseResponse<PublisherList>>
 }
